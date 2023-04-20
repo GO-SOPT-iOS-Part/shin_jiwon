@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "D5AF30F3-2E5C-4C55-A149-1AC2E0AE1265"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E922DF56-E59E-4DF7-82E3-C0A87F9A0C34"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "sopt_2nd_week_practice/FirstViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
+            landmarkName = "setstyle()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3379419C-304E-46F4-98E5-A99BFB99E3DB"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "sopt_2nd_week_practice/FirstViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
+            landmarkName = "setstyle()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "3379419C-304E-46F4-98E5-A99BFB99E3DB - f2114ee1daf347c6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #6 (__C.UIButton) -&gt; () in sopt_2nd_week_practice.FirstViewController.setstyle() -&gt; ()"
+                  moduleName = "sopt_2nd_week_practice"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shinjiwon/Desktop/SOPT/iOS/sopt_2nd_week_practice/sopt_2nd_week_practice/FirstViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "86"
+                  endingLineNumber = "86"
+                  offsetFromSymbolStart = "184">
+               </Location>
+               <Location
+                  uuid = "3379419C-304E-46F4-98E5-A99BFB99E3DB - 6b7c54f68aab752"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "sopt_2nd_week_practice.FirstViewController.setstyle() -&gt; ()"
+                  moduleName = "sopt_2nd_week_practice"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shinjiwon/Desktop/SOPT/iOS/sopt_2nd_week_practice/sopt_2nd_week_practice/FirstViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "88"
+                  endingLineNumber = "88"
+                  offsetFromSymbolStart = "1076">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F0C8D65D-1E5B-4E13-B698-8BDC49319352"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "sopt_2nd_week_practice/Extension.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "setPlaceholder(color:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
