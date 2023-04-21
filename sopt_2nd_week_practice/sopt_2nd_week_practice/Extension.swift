@@ -30,6 +30,7 @@ extension UITextField {
         self.leftView = paddingView
         self.leftViewMode = ViewMode.always
     }
+    
 }
 
 extension UITextField {
@@ -43,7 +44,7 @@ extension UITextField {
 }
 
 extension FirstViewController {
-
+    
     func textFieldDidBeginEditing(_ textField: UITextField) {
         
         if textField.hasText || textField.isEditing {
@@ -52,12 +53,13 @@ extension FirstViewController {
             
             if(textField == passwordtextfield) {
                 eyeButton.isHidden = false
-                clearButton.isHidden = false
-                clearButton.isEnabled = true
+                //clearButton.isHidden = false
+                //clearButton.isEnabled = true
             }
+            
         }
     }
-
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
         
         textField.layer.borderWidth = 0
@@ -76,7 +78,7 @@ extension FirstViewController {
             loginButton.layer.borderWidth = 1
         }
         
-    
+        
     }
 }
 

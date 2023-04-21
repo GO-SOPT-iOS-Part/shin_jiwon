@@ -14,8 +14,8 @@
             filePath = "sopt_2nd_week_practice/FirstViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "145"
-            endingLineNumber = "145"
+            startingLineNumber = "172"
+            endingLineNumber = "172"
             landmarkName = "setstyle()"
             landmarkType = "7">
          </BreakpointContent>
@@ -30,8 +30,8 @@
             filePath = "sopt_2nd_week_practice/FirstViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
+            startingLineNumber = "151"
+            endingLineNumber = "151"
             landmarkName = "setstyle()"
             landmarkType = "7">
             <Locations>
@@ -78,8 +78,8 @@
             filePath = "sopt_2nd_week_practice/Extension.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
             landmarkName = "setPlaceholder(color:)"
             landmarkType = "7">
          </BreakpointContent>

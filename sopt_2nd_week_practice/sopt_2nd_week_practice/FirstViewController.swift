@@ -36,7 +36,7 @@ final class FirstViewController: UIViewController,UITextFieldDelegate,UITextView
         
         //password 와 관련된 함수
         setpasswordshownimage()
-        
+        modifyClearButtonWithImage()
         idtextfield.delegate = self
         passwordtextfield.delegate = self
         
@@ -60,6 +60,30 @@ final class FirstViewController: UIViewController,UITextFieldDelegate,UITextView
         self.eyeButton.configuration = buttonConfiguration
         self.passwordtextfield.rightView = eyeButton
         self.passwordtextfield.rightViewMode = .always
+    }
+    
+    //요고 모르겠담
+    private func modifyClearButtonWithImage() {
+        
+        clearButton = UIButton.init(primaryAction: UIAction(handler: { [self]_ in
+            //여기서는 then 을 쓸 수 없나요?
+            passwordtextfield.isSecureTextEntry.toggle()
+            self.clearButton.isSelected.toggle()
+        }))
+        
+        clearButton.setImage(UIImage(named: "x"), for: .normal)
+        clearButton.frame = CGRect(x: 613, y: 71, width: 20, height: 20)
+        clearButton.contentMode = .scaleAspectFit
+        clearButton.addTarget(self, action: #selector(clear(sender:) ), for: .touchUpInside)
+        //var buttonConfiguration = UIButton.Configuration.plain()
+        //self.eyeButton.configuration = buttonConfiguration
+        //self.passwordtextfield.rightView = clearButton
+        //self.passwordtextfield.rightViewMode = .whileEditing
+    }
+    
+    @objc func clear(sender : AnyObject) {
+        self.passwordtextfield.text = ""
+        //sendActions(for: .editingChanged)
     }
     
     
@@ -101,9 +125,10 @@ private extension FirstViewController {
             //처음에 비밀번호가 안보이게 감춤
             $0.isSecureTextEntry = true
             
-            /*clear 버튼은 있지만 커스텀 할 수 없음 하하!
-             $0.clearButtonMode = .always
-             $0.clearsOnBeginEditing = true
+            /*
+            $0.clearButtonMode = .whileEditing
+            $0.clearsOnBeginEditing = true
+            $0.rightView = clearButton
              */
         }
         /*
@@ -112,7 +137,7 @@ private extension FirstViewController {
          $0.setImage((UIImage(named: "eye")), for: .selected)
          eyeButton.isHidden = true
          }
-         */
+         
         clearButton.then {
             $0.setImage(UIImage(named: "x"), for: .normal)
             $0.isHidden = true
@@ -120,7 +145,9 @@ private extension FirstViewController {
                          action: #selector(clearButtonTapped),
                          for: .touchUpInside)
             $0.isEnabled = false
+        
         }
+        */
         //password 와 관련된 함수 끝
         
         loginButton.then {
@@ -177,7 +204,7 @@ private extension FirstViewController {
             noaccountLabel,
             makeaccountButton
         )
-        passwordtextfield.addSubviews(clearButton)
+        //passwordtextfield.addSubviews(clearButton)
         
         beforeButton.snp.makeConstraints {
             $0.top.equalToSuperview().inset(65)
@@ -205,12 +232,12 @@ private extension FirstViewController {
          $0.leading.equalTo(clearButton.snp.trailing).offset(16)
          $0.height.width.equalTo(20)
          }
-         */
         clearButton.snp.makeConstraints {
             $0.top.equalToSuperview().inset(18)
             $0.leading.equalToSuperview().inset(259)
             $0.height.width.equalTo(20)
         }
+         */
         loginButton.snp.makeConstraints {
             $0.top.equalTo(passwordtextfield.snp.bottom).offset(21)
             $0.centerX.equalToSuperview()
@@ -280,7 +307,7 @@ private extension FirstViewController {
     @objc private func clearButtonTapped() {
         passwordtextfield.text = ""
         loginButton.isEnabled = false
-        clearButton.isHidden = true
+        //clearButton.isHidden = true
     }
     
 }
