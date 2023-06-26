@@ -22,7 +22,7 @@ final class ViewController: UIViewController {
         setLayout()
     }
 }
-
+ 
 private extension ViewController {
     
     func setStyle() {
