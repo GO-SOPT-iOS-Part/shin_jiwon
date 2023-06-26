@@ -10,6 +10,8 @@ import UIKit
 
 final class SecondViewController: UIViewController {
     
+    var name: String?
+    
     private let nameLabel: UILabel = {
         let label = UILabel()
         label.text = "제 이름은요!"
@@ -33,17 +35,13 @@ final class SecondViewController: UIViewController {
         
         setStyle()
         setLayout()
+        dataBind()
     }
     
-    @objc
-    func backButtonTapped() {
-        
-        if self.navigationController == nil {
-            self.dismiss(animated: true, completion: nil)
-        } else {
-            self.navigationController?.popViewController(animated: true)
-        }
+    func dataBind() {
+            nameLabel.text = name
     }
+    
 }
 
 private extension SecondViewController{
@@ -68,5 +66,15 @@ private extension SecondViewController{
                                      backButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
                                      backButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
                                      backButton.heightAnchor.constraint(equalToConstant: 48)])
+    }
+    
+    @objc
+    func backButtonTapped() {
+        
+        if self.navigationController == nil {
+            self.dismiss(animated: true, completion: nil)
+        } else {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
 }

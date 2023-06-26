@@ -27,9 +27,8 @@ final class ViewController: UIViewController {
         button.setTitleColor(.blue, for: .normal)
         //⭐️버튼 터치
         button.addTarget(self,
-                                 action: #selector(presentButtonTapped),
-                                 for: .touchUpInside)
-                return button
+                         action: #selector(presentButtonTapped),
+                         for: .touchUpInside)
         return button
     }()
     
@@ -41,8 +40,8 @@ final class ViewController: UIViewController {
         button.setTitleColor(.blue, for: .normal)
         //⭐️버튼 터치
         button.addTarget(self,
-                                action: #selector(pushButtonTapped),
-                                for: .touchUpInside)
+                         action: #selector(pushButtonTapped),
+                         for: .touchUpInside)
         return button
         
     }()
@@ -63,6 +62,44 @@ final class ViewController: UIViewController {
         setStyle()
         setLayout()
     }
+}
+
+private extension ViewController {
+    
+    func setStyle() {
+        
+        view.backgroundColor = .white
+    }
+    
+    //오토레이아웃으로 잡았다!
+    func setLayout() {
+        
+        [nameLabel, nameTextField,
+         presentButton, pushButton].forEach {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            //autoresizingMask 또한 superView 에 따라 크기를 변경하려 하기 때문에 AutoLayout 과 충돌 될 수 있어 autoresizingMask의 사용을 false 처리 한 것
+            view.addSubview($0)
+        }
+        
+        NSLayoutConstraint.activate([nameLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 300),
+                                     nameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+                                     nameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30)])
+        
+        NSLayoutConstraint.activate([nameTextField.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 20),
+                                     nameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+                                     nameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
+                                     nameTextField.heightAnchor.constraint(equalToConstant: 48)])
+        
+        NSLayoutConstraint.activate([presentButton.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 20),
+                                     presentButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+                                     presentButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
+                                     presentButton.heightAnchor.constraint(equalToConstant: 48)])
+        
+        NSLayoutConstraint.activate([pushButton.topAnchor.constraint(equalTo: presentButton.bottomAnchor, constant: 20),
+                                     pushButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+                                     pushButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
+                                     pushButton.heightAnchor.constraint(equalToConstant: 48)])
+    }
     
     func presentToSecondViewController() {
         
@@ -73,7 +110,9 @@ final class ViewController: UIViewController {
     
     func pushToSecondViewController() {
         
+        guard let name = nameTextField.text else { return }
         let secondViewController = SecondViewController()
+        secondViewController.name = name
         self.navigationController?.pushViewController(secondViewController, animated: true)
     }
     
@@ -90,43 +129,5 @@ final class ViewController: UIViewController {
         
     }
 }
-    
-    private extension ViewController {
-        
-        func setStyle() {
-            
-            view.backgroundColor = .white
-        }
-        
-        //오토레이아웃으로 잡았다!
-        func setLayout() {
-            
-            [nameLabel, nameTextField,
-             presentButton, pushButton].forEach {
-                $0.translatesAutoresizingMaskIntoConstraints = false
-                //autoresizingMask 또한 superView 에 따라 크기를 변경하려 하기 때문에 AutoLayout 과 충돌 될 수 있어 autoresizingMask의 사용을 false 처리 한 것
-                view.addSubview($0)
-            }
-            
-            NSLayoutConstraint.activate([nameLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 300),
-                                         nameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
-                                         nameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30)])
-            
-            NSLayoutConstraint.activate([nameTextField.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 20),
-                                         nameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
-                                         nameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
-                                         nameTextField.heightAnchor.constraint(equalToConstant: 48)])
-            
-            NSLayoutConstraint.activate([presentButton.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 20),
-                                         presentButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
-                                         presentButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
-                                         presentButton.heightAnchor.constraint(equalToConstant: 48)])
-            
-            NSLayoutConstraint.activate([pushButton.topAnchor.constraint(equalTo: presentButton.bottomAnchor, constant: 20),
-                                         pushButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
-                                         pushButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
-                                         pushButton.heightAnchor.constraint(equalToConstant: 48)])
-        }
-    }
-    
-    
+
+
