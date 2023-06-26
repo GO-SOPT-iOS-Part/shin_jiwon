@@ -22,6 +22,9 @@ final class SecondViewController: UIViewController {
         button.setTitle("뒤로가기", for: .normal)
         button.setTitleColor(.blue, for: .normal)
         button.titleLabel?.font = .boldSystemFont(ofSize: 20)
+        button.addTarget(self,
+                         action: #selector(backButtonTapped),
+                         for: .touchUpInside)
         return button
     }()
     
@@ -30,6 +33,16 @@ final class SecondViewController: UIViewController {
         
         setStyle()
         setLayout()
+    }
+    
+    @objc
+    func backButtonTapped() {
+        
+        if self.navigationController == nil {
+            self.dismiss(animated: true, completion: nil)
+        } else {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
 }
 
@@ -49,7 +62,7 @@ private extension SecondViewController{
         
         NSLayoutConstraint.activate([nameLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
                                      nameLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor)])
-    
+        
         
         NSLayoutConstraint.activate([backButton.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 20),
                                      backButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
