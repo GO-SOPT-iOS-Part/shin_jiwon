@@ -25,6 +25,11 @@ final class ViewController: UIViewController {
         button.setTitle("present!", for: .normal)
         button.backgroundColor = .yellow
         button.setTitleColor(.blue, for: .normal)
+        //⭐️버튼 터치
+        button.addTarget(self,
+                                 action: #selector(presentButtonTapped),
+                                 for: .touchUpInside)
+                return button
         return button
     }()
     
@@ -34,6 +39,10 @@ final class ViewController: UIViewController {
         button.setTitle("push!", for: .normal)
         button.backgroundColor = .yellow
         button.setTitleColor(.blue, for: .normal)
+        //⭐️버튼 터치
+        button.addTarget(self,
+                                action: #selector(pushButtonTapped),
+                                for: .touchUpInside)
         return button
         
     }()
@@ -53,6 +62,32 @@ final class ViewController: UIViewController {
         
         setStyle()
         setLayout()
+    }
+    
+    func presentToSecondViewController() {
+        
+        let secondViewController = SecondViewController()
+        secondViewController.modalPresentationStyle = .fullScreen
+        self.present(secondViewController, animated: true)
+    }
+    
+    func pushToSecondViewController() {
+        
+        let secondViewController = SecondViewController()
+        self.navigationController?.pushViewController(secondViewController, animated: true)
+    }
+    
+    @objc
+    func presentButtonTapped() {
+        
+        presentToSecondViewController()
+    }
+    
+    @objc
+    func pushButtonTapped() {
+        
+        pushToSecondViewController()
+        
     }
 }
     
