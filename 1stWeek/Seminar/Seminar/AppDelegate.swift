@@ -10,23 +10,6 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
-//  ⭐️ StoryBoard 연결 해제하고 화면을 변경해주는 코드 ⭐️
-    var window: UIWindow?
-        
-        func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-            
-        // 1.
-            guard let windowScene = (scene as? UIWindowScene) else { return }
-        // 2.
-            self.window = UIWindow(windowScene: windowScene)
-        // 3.
-            let navigationController = UINavigationController(rootViewController: ViewController())
-            self.window?.rootViewController = navigationController
-        // 4.
-            self.window?.makeKeyAndVisible()
-        }
-    
-//  ⭐️⭐️
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
