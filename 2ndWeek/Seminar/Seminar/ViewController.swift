@@ -34,6 +34,7 @@ class ViewController: UIViewController {
             $0.backgroundColor = .black
             $0.font = .boldSystemFont(ofSize: 30)
             $0.textAlignment = .center
+            $0.makeRounded(radius: 10.0)
         }
         
         modalButton.then {
@@ -42,6 +43,7 @@ class ViewController: UIViewController {
             $0.backgroundColor = .blue
             $0.titleLabel?.font = .boldSystemFont(ofSize: 25)
             $0.titleLabel?.textAlignment = .center
+            $0.makeRounded(radius: 15.0)
         }
         
     }
@@ -50,7 +52,7 @@ class ViewController: UIViewController {
         numberLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.centerY.equalToSuperview()
-            $0.width.equalTo(200)
+            $0.width.equalTo(250)
             $0.height.equalTo(70)
         }
         modalButton.snp.makeConstraints {
@@ -59,6 +61,14 @@ class ViewController: UIViewController {
             $0.width.equalTo(130)
             $0.height.equalTo(70)
         }
+    }
+}
+
+extension UIView {
+    func makeRounded(radius : CGFloat) {
+        layer.masksToBounds = false
+        layer.cornerRadius = radius
+        clipsToBounds = true
     }
 }
 

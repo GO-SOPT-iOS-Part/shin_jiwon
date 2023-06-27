@@ -34,6 +34,7 @@ class SecondViewController: UIViewController {
             $0.titleLabel?.textColor = .white
             $0.backgroundColor = .blue
             $0.titleLabel?.textAlignment = .center
+            $0.makeRounded(radius: 15.0)
         }
         backButton.then {
             $0.setTitle("이전으로", for: .normal)
@@ -41,6 +42,7 @@ class SecondViewController: UIViewController {
             $0.titleLabel?.textColor = .white
             $0.backgroundColor = .blue
             $0.titleLabel?.textAlignment = .center
+            $0.makeRounded(radius: 15.0)
         }
     }
     
