@@ -44,6 +44,10 @@ class ViewController: UIViewController {
             $0.titleLabel?.font = .boldSystemFont(ofSize: 25)
             $0.titleLabel?.textAlignment = .center
             $0.makeRounded(radius: 15.0)
+            
+            $0.addTarget( self,
+                          action: #selector(pushSecondViewControllerTapped),
+                          for: .touchUpInside)
         }
         
     }
@@ -61,6 +65,17 @@ class ViewController: UIViewController {
             $0.width.equalTo(130)
             $0.height.equalTo(70)
         }
+    }
+    
+    func pushSecondViewController() {
+        let secondViewController = SecondViewController()
+        secondViewController.modalPresentationStyle = .fullScreen
+        self.present(secondViewController, animated: true)
+    }
+    
+    @objc
+    func pushSecondViewControllerTapped() {
+        pushSecondViewController()
     }
 }
 
