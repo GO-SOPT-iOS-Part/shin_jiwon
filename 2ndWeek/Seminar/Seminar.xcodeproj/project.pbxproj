@@ -11,6 +11,9 @@
 		2C59780E2A4B4AC700F07387 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C59780D2A4B4AC700F07387 /* SceneDelegate.swift */; };
 		2C5978102A4B4AC700F07387 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C59780F2A4B4AC700F07387 /* ViewController.swift */; };
 		2C5978152A4B4AC900F07387 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C5978142A4B4AC900F07387 /* Assets.xcassets */; };
+		2C5978212A4B541100F07387 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2C5978202A4B541100F07387 /* SnapKit */; };
+		2C5978232A4B559C00F07387 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5978222A4B559C00F07387 /* SecondViewController.swift */; };
+		2C5978262A4B567B00F07387 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 2C5978252A4B567B00F07387 /* Then */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +23,7 @@
 		2C59780F2A4B4AC700F07387 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2C5978142A4B4AC900F07387 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2C5978192A4B4AC900F07387 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2C5978222A4B559C00F07387 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,6 +31,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C5978212A4B541100F07387 /* SnapKit in Frameworks */,
+				2C5978262A4B567B00F07387 /* Then in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,6 +61,7 @@
 				2C59780B2A4B4AC700F07387 /* AppDelegate.swift */,
 				2C59780D2A4B4AC700F07387 /* SceneDelegate.swift */,
 				2C59780F2A4B4AC700F07387 /* ViewController.swift */,
+				2C5978222A4B559C00F07387 /* SecondViewController.swift */,
 				2C5978142A4B4AC900F07387 /* Assets.xcassets */,
 				2C5978192A4B4AC900F07387 /* Info.plist */,
 			);
@@ -77,6 +84,10 @@
 			dependencies = (
 			);
 			name = Seminar;
+			packageProductDependencies = (
+				2C5978202A4B541100F07387 /* SnapKit */,
+				2C5978252A4B567B00F07387 /* Then */,
+			);
 			productName = Seminar;
 			productReference = 2C5978082A4B4AC700F07387 /* Seminar.app */;
 			productType = "com.apple.product-type.application";
@@ -105,6 +116,10 @@
 				Base,
 			);
 			mainGroup = 2C5977FF2A4B4AC700F07387;
+			packageReferences = (
+				2C59781F2A4B541100F07387 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				2C5978242A4B567B00F07387 /* XCRemoteSwiftPackageReference "Then" */,
+			);
 			productRefGroup = 2C5978092A4B4AC700F07387 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -130,6 +145,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C5978232A4B559C00F07387 /* SecondViewController.swift in Sources */,
 				2C5978102A4B4AC700F07387 /* ViewController.swift in Sources */,
 				2C59780C2A4B4AC700F07387 /* AppDelegate.swift in Sources */,
 				2C59780E2A4B4AC700F07387 /* SceneDelegate.swift in Sources */,
@@ -329,6 +345,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2C59781F2A4B541100F07387 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		2C5978242A4B567B00F07387 /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2C5978202A4B541100F07387 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2C59781F2A4B541100F07387 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		2C5978252A4B567B00F07387 /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2C5978242A4B567B00F07387 /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2C5978002A4B4AC700F07387 /* Project object */;
 }
