@@ -43,6 +43,9 @@ class SecondViewController: UIViewController {
             $0.backgroundColor = .blue
             $0.titleLabel?.textAlignment = .center
             $0.makeRounded(radius: 15.0)
+            
+            $0.addTarget(self,
+                         action: #selector(backButtonTapped), for: .touchUpInside)
         }
     }
     
@@ -59,6 +62,11 @@ class SecondViewController: UIViewController {
             $0.width.equalTo(130)
             $0.height.equalTo(70)
         }
+    }
+    
+    @objc
+    func backButtonTapped() {
+        self.dismiss(animated: true)
     }
 
 }
