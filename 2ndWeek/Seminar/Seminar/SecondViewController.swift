@@ -9,10 +9,18 @@ import UIKit
 import SnapKit
 import Then
 
+@objc
+protocol TapButton : AnyObject {
+    @objc optional func buttonTapped(count : Int)
+}
+
 class SecondViewController: UIViewController {
 
     var plzPushButton = UIButton()
     var backButton = UIButton()
+    
+    private var tappedCount : Int = 0
+    weak var delegate: TapButton?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +43,10 @@ class SecondViewController: UIViewController {
             $0.backgroundColor = .blue
             $0.titleLabel?.textAlignment = .center
             $0.makeRounded(radius: 15.0)
+            
+            $0.addTarget(self,
+                         action: #selector(countButtonTapped),
+                         for: .touchUpInside)
         }
         backButton.then {
             $0.setTitle("이전으로", for: .normal)
@@ -45,7 +57,8 @@ class SecondViewController: UIViewController {
             $0.makeRounded(radius: 15.0)
             
             $0.addTarget(self,
-                         action: #selector(backButtonTapped), for: .touchUpInside)
+                         action: #selector(backButtonTapped),
+                         for: .touchUpInside)
         }
     }
     
@@ -66,7 +79,13 @@ class SecondViewController: UIViewController {
     
     @objc
     func backButtonTapped() {
+        delegate?.buttonTapped?(count: tappedCount)
         self.dismiss(animated: true)
+    }
+    
+    @objc
+    func countButtonTapped() {
+        tappedCount += 1
     }
 
 }

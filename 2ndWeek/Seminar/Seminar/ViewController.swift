@@ -14,6 +14,12 @@ class ViewController: UIViewController {
     var numberLabel = UILabel()
     var modalButton = UIButton()
     
+    private var count = 0 {
+        didSet {
+            self.numberLabel.text = count > 10 ? "10번 이상 눌렀네? .. \(count)" : "조금만 더 눌러봐 .. \(count)"
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,7 +38,7 @@ class ViewController: UIViewController {
             $0.text = "조금만 더 눌러봐"
             $0.textColor = .white
             $0.backgroundColor = .black
-            $0.font = .boldSystemFont(ofSize: 30)
+            $0.font = .boldSystemFont(ofSize: 20)
             $0.textAlignment = .center
             $0.makeRounded(radius: 10.0)
         }
@@ -69,6 +75,7 @@ class ViewController: UIViewController {
     
     func pushSecondViewController() {
         let secondViewController = SecondViewController()
+        secondViewController.delegate = self
         secondViewController.modalPresentationStyle = .fullScreen
         self.present(secondViewController, animated: true)
     }
@@ -84,6 +91,13 @@ extension UIView {
         layer.masksToBounds = false
         layer.cornerRadius = radius
         clipsToBounds = true
+    }
+}
+
+extension ViewController : TapButton {
+    
+    func buttonTapped(count: Int) {
+        self.count = count
     }
 }
 
