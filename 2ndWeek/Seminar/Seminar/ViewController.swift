@@ -18,6 +18,10 @@ class ViewController: UIViewController {
         didSet {
             self.numberLabel.text = count > 10 ? "10번 이상 눌렀네? .. \(count)" : "조금만 더 눌러봐 .. \(count)"
         }
+        
+//        didSet 은 새로운 값이 저장된 직후에 호출된다.
+//        willSet 은 새로운 값이 저장되기 직전에 호출된다.
+//        따라서 누른 횟수를 반영해주기 위하여 didSet 을 사용하였다
     }
     
     override func viewDidLoad() {
@@ -97,7 +101,10 @@ extension UIView {
 extension ViewController : TapButton {
     
     func buttonTapped(count: Int) {
-        self.count = count
+        self.count += count
+        
+        //self.count = count 은 뷰가 바뀌면서 초기화 됨
+        //self.count += count 는 누른 횟수가 누적되어 나타남
     }
 }
 
