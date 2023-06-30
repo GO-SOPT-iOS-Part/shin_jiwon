@@ -16,8 +16,8 @@ protocol TapButton : AnyObject {
 
 class SecondViewController: UIViewController {
 
-    var plzPushButton = UIButton()
-    var backButton = UIButton()
+    var plzPushButton = AnimationButton()
+    var backButton = AnimationButton()
     
     private var tappedCount : Int = 0
     weak var delegate: TapButton?
@@ -65,13 +65,13 @@ class SecondViewController: UIViewController {
     func setLayout() {
         plzPushButton.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.centerY.equalToSuperview()
+            $0.top.equalToSuperview().offset(350)
             $0.width.equalTo(130)
             $0.height.equalTo(70)
         }
         backButton.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.centerY.equalTo(plzPushButton.snp.bottom).offset(50)
+            $0.top.equalTo(plzPushButton.snp.bottom).offset(30)
             $0.width.equalTo(130)
             $0.height.equalTo(70)
         }

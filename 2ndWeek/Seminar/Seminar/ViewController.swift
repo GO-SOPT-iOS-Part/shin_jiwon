@@ -12,7 +12,7 @@ import Then
 class ViewController: UIViewController {
 
     var numberLabel = UILabel()
-    var modalButton = UIButton()
+    var modalButton =  AnimationButton()
     
     private var count = 0 {
         didSet {
@@ -38,7 +38,7 @@ class ViewController: UIViewController {
             $0.text = "조금만 더 눌러봐"
             $0.textColor = .white
             $0.backgroundColor = .black
-            $0.font = .boldSystemFont(ofSize: 20)
+            $0.font = .boldSystemFont(ofSize: 28)
             $0.textAlignment = .center
             $0.makeRounded(radius: 10.0)
         }
@@ -61,13 +61,13 @@ class ViewController: UIViewController {
     private func setLayout() {
         numberLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.centerY.equalToSuperview()
+            $0.top.equalToSuperview().offset(350)
             $0.width.equalTo(250)
             $0.height.equalTo(70)
         }
         modalButton.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.top.equalTo(numberLabel.snp.bottom).offset(20)
+            $0.top.equalTo(numberLabel.snp.bottom).offset(30)
             $0.width.equalTo(130)
             $0.height.equalTo(70)
         }

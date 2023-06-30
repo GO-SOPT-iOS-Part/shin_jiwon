@@ -14,6 +14,7 @@
 		2C5978212A4B541100F07387 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2C5978202A4B541100F07387 /* SnapKit */; };
 		2C5978232A4B559C00F07387 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5978222A4B559C00F07387 /* SecondViewController.swift */; };
 		2C5978262A4B567B00F07387 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 2C5978252A4B567B00F07387 /* Then */; };
+		2CC81EA82A4EBE9C003F2A04 /* AnimationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC81EA72A4EBE9C003F2A04 /* AnimationButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		2C5978142A4B4AC900F07387 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2C5978192A4B4AC900F07387 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C5978222A4B559C00F07387 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		2CC81EA72A4EBE9C003F2A04 /* AnimationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				2C59780D2A4B4AC700F07387 /* SceneDelegate.swift */,
 				2C59780F2A4B4AC700F07387 /* ViewController.swift */,
 				2C5978222A4B559C00F07387 /* SecondViewController.swift */,
+				2CC81EA72A4EBE9C003F2A04 /* AnimationButton.swift */,
 				2C5978142A4B4AC900F07387 /* Assets.xcassets */,
 				2C5978192A4B4AC900F07387 /* Info.plist */,
 			);
@@ -149,6 +152,7 @@
 				2C5978102A4B4AC700F07387 /* ViewController.swift in Sources */,
 				2C59780C2A4B4AC700F07387 /* AppDelegate.swift in Sources */,
 				2C59780E2A4B4AC700F07387 /* SceneDelegate.swift in Sources */,
+				2CC81EA82A4EBE9C003F2A04 /* AnimationButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
