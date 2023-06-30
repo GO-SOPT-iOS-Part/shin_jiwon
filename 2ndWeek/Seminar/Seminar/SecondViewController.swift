@@ -12,6 +12,14 @@ import Then
 @objc
 protocol TapButton : AnyObject {
     @objc optional func buttonTapped(count : Int)
+    
+//    protocol 로 TapButton 에 대한 양식을 짜주었다
+//    그리고 아래서 [extension ViewController : TapButton ~] 을 선언하여
+//    count 에 대한 선언 추가!
+    
+//    protocol 은 어디에나 해도 된다. 그럼 왜 세컨뷰에다가 했는가?
+//    보통 데이터를 넘겨주는 쪽에서 protocol 을 선언한다. 따라서 세컨뷰에다 선언!
+    
 }
 
 class SecondViewController: UIViewController {
