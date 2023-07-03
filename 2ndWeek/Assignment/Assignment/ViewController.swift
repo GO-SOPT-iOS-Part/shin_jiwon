@@ -53,6 +53,9 @@ class ViewController: UIViewController {
             $0.layer.backgroundColor = UIColor.tvingGray4.cgColor
             $0.layer.cornerRadius = 3
             $0.addLeftPadding()
+            
+            $0.addTarget(self, action: #selector(textFieldStartChange), for: .editingChanged)
+            $0.addTarget(self, action: #selector(textFieldEndChange), for: .editingDidEnd)
         }
         passwordTextField.then {
             $0.placeholder = "비밀번호"
@@ -62,6 +65,9 @@ class ViewController: UIViewController {
             $0.layer.backgroundColor = UIColor.tvingGray4.cgColor
             $0.layer.cornerRadius = 3
             $0.addLeftPadding()
+            
+            $0.addTarget(self, action: #selector(textFieldStartChange), for: .editingChanged)
+            $0.addTarget(self, action: #selector(textFieldEndChange), for: .editingDidEnd)
         }
         loginButton.then {
             $0.setTitle("로그인하기", for: .normal)
@@ -147,6 +153,27 @@ class ViewController: UIViewController {
             $0.centerY.equalTo(noticeLabel.snp.centerY)
             $0.leading.equalTo(noticeLabel.snp.trailing).offset(17)
         }
+    }
+    
+    
+    @objc func textFieldStartChange(_ TextField: UITextField) {
+        TextField.layer.borderColor = UIColor.tvingGray2.cgColor
+        TextField.layer.borderWidth = 1
+        
+        if idTextField.hasText && passwordTextField.hasText {
+            loginButton.layer.backgroundColor = UIColor.tvingRed.cgColor
+            loginButton.layer.borderColor = UIColor.tvingRed.cgColor
+            loginButton.setTitleColor(.white, for: .normal)
+        }
+        else if !idTextField.hasText || !passwordTextField.hasText {
+            loginButton.layer.backgroundColor = UIColor.label.cgColor
+            loginButton.layer.borderColor = UIColor.tvingGray4.cgColor
+            loginButton.setTitleColor(.tvingGray2, for: .normal)
+        }
+    }
+    
+    @objc func textFieldEndChange(_ TextField: UITextField) {
+        TextField.layer.borderWidth = 0
     }
     
     
