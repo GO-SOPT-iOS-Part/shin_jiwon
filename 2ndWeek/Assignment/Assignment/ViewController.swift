@@ -15,6 +15,8 @@ class ViewController: UIViewController {
     
     private var idTextField = UITextField()
     private var passwordTextField = UITextField()
+    private var clearButton = UIButton()
+    private var eyeButton = UIButton()
     private var loginButton = UIButton()
     
     private var findidButton = UIButton()
@@ -37,6 +39,7 @@ class ViewController: UIViewController {
         
         view.addSubviews(titleLabel,
                          idTextField, passwordTextField,loginButton,
+                         clearButton, eyeButton,
                          findidButton, findpasswordButton, sidebar,
                          noticeLabel, makenicknameButton)
         
@@ -68,6 +71,21 @@ class ViewController: UIViewController {
             
             $0.addTarget(self, action: #selector(textFieldStartChange), for: .editingChanged)
             $0.addTarget(self, action: #selector(textFieldEndChange), for: .editingDidEnd)
+            
+            $0.isSecureTextEntry = true
+        }
+        clearButton.then {
+            $0.setImage(UIImage(named: "clearBtn"), for: .normal)
+            $0.isHidden = true
+            
+            $0.addTarget(self, action: #selector(clearBtnTapped(sender:)), for: .touchUpInside)
+        }
+        eyeButton.then {
+            $0.setImage(UIImage(named: "noeyeBtn"), for: .normal)
+            $0.setImage(UIImage(named: "eyeBtn"), for: .selected)
+            $0.isHidden = true
+            
+            $0.addTarget(self, action: #selector(eyeBtnTapped), for: .touchUpInside)
         }
         loginButton.then {
             $0.setTitle("로그인하기", for: .normal)
@@ -125,6 +143,16 @@ class ViewController: UIViewController {
             $0.leading.trailing.equalToSuperview().inset(20)
             $0.height.equalTo(52)
         }
+        clearButton.snp.makeConstraints() {
+            $0.centerY.equalTo(passwordTextField.snp.centerY)
+            $0.trailing.equalToSuperview().inset(76)
+            $0.size.equalTo(20)
+        }
+        eyeButton.snp.makeConstraints() {
+            $0.centerY.equalTo(clearButton.snp.centerY)
+            $0.trailing.equalToSuperview().inset(40)
+            $0.size.equalTo(20)
+        }
         loginButton.snp.makeConstraints() {
             $0.top.equalTo(passwordTextField.snp.bottom).offset(21)
             $0.centerX.equalToSuperview()
@@ -160,6 +188,15 @@ class ViewController: UIViewController {
         TextField.layer.borderColor = UIColor.tvingGray2.cgColor
         TextField.layer.borderWidth = 1
         
+        if passwordTextField.hasText {
+            clearButton.isHidden = false
+            eyeButton.isHidden = false
+        }
+        else if !passwordTextField.hasText {
+            clearButton.isHidden.toggle()
+            eyeButton.isHidden.toggle()
+        }
+        
         if idTextField.hasText && passwordTextField.hasText {
             loginButton.layer.backgroundColor = UIColor.tvingRed.cgColor
             loginButton.layer.borderColor = UIColor.tvingRed.cgColor
@@ -176,6 +213,14 @@ class ViewController: UIViewController {
         TextField.layer.borderWidth = 0
     }
     
+    @objc func clearBtnTapped(sender : AnyObject) {
+        self.passwordTextField.text = ""
+        clearButton.isHidden.toggle()
+    }
+    
+    @objc func eyeBtnTapped() {
+        self.passwordTextField.isSecureTextEntry.toggle()
+    }
     
 }
 
