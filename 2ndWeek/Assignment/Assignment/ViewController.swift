@@ -64,11 +64,11 @@ class ViewController: UIViewController {
         loginButton.then {
             $0.setTitle("로그인하기", for: .normal)
             $0.setTitleColor(.tvingGray2, for: .normal)
-            $0.layer.backgroundColor = UIColor.tvingGray4.cgColor
+            $0.layer.backgroundColor = UIColor.label.cgColor
             $0.titleLabel?.font = UIFont(name: "Pretendard-Bold", size: 14)
             $0.titleLabel?.textAlignment = .center
             $0.layer.borderWidth = 1
-            $0.layer.borderColor = UIColor.tvingGray2.cgColor
+            $0.layer.borderColor = UIColor.tvingGray4.cgColor
             $0.layer.cornerRadius = 3
         }
         
@@ -124,11 +124,11 @@ class ViewController: UIViewController {
             $0.height.equalTo(52)
         }
         findidButton.snp.makeConstraints() {
-            $0.top.equalTo(loginButton.snp.bottom).offset(31)
+            $0.centerY.equalTo(sidebar.snp.centerY)
             $0.trailing.equalTo(sidebar.snp.leading).offset(-33)
         }
         findpasswordButton.snp.makeConstraints() {
-            $0.top.equalTo(loginButton.snp.bottom).offset(31)
+            $0.centerY.equalTo(sidebar.snp.centerY)
             $0.leading.equalTo(sidebar.snp.leading).offset(36)
         }
         sidebar.snp.makeConstraints() {
@@ -142,7 +142,7 @@ class ViewController: UIViewController {
             $0.trailing.equalTo(sidebar.snp.trailing)
         }
         makenicknameButton.snp.makeConstraints() {
-            $0.top.equalTo(noticeLabel.snp.top)
+            $0.centerY.equalTo(noticeLabel.snp.centerY)
             $0.leading.equalTo(noticeLabel.snp.trailing).offset(17)
         }
     }
