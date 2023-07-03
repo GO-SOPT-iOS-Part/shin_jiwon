@@ -52,6 +52,7 @@ class ViewController: UIViewController {
             $0.textColor = .tvingGray2
             $0.layer.backgroundColor = UIColor.tvingGray4.cgColor
             $0.layer.cornerRadius = 3
+            $0.addLeftPadding()
         }
         passwordTextField.then {
             $0.placeholder = "비밀번호"
@@ -60,6 +61,7 @@ class ViewController: UIViewController {
             $0.textColor = .tvingGray2
             $0.layer.backgroundColor = UIColor.tvingGray4.cgColor
             $0.layer.cornerRadius = 3
+            $0.addLeftPadding()
         }
         loginButton.then {
             $0.setTitle("로그인하기", for: .normal)
