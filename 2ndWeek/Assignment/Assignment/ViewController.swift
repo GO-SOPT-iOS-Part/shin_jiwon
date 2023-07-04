@@ -96,8 +96,9 @@ class ViewController: UIViewController {
             $0.layer.borderWidth = 1
             $0.layer.borderColor = UIColor.tvingGray4.cgColor
             $0.layer.cornerRadius = 3
+            
+            $0.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         }
-        
         findidButton.then {
             $0.setTitle("아이디 찾기", for: .normal)
             $0.setTitleColor(.tvingGray2, for: .normal)
@@ -111,7 +112,6 @@ class ViewController: UIViewController {
         sidebar.then {
             $0.backgroundColor = .tvingGray4
         }
-        
         noticeLabel.then {
             $0.text = "아직 계정이 없으신가요?"
             $0.font = UIFont(name: "Pretendard-Regular", size: 14)
@@ -193,8 +193,8 @@ class ViewController: UIViewController {
             eyeButton.isHidden = false
         }
         else if !passwordTextField.hasText {
-            clearButton.isHidden.toggle()
-            eyeButton.isHidden.toggle()
+            clearButton.isHidden = true
+            eyeButton.isHidden = true
         }
         
         if idTextField.hasText && passwordTextField.hasText {
@@ -216,6 +216,7 @@ class ViewController: UIViewController {
     @objc func clearBtnTapped(sender : AnyObject) {
         self.passwordTextField.text = ""
         clearButton.isHidden.toggle()
+        eyeButton.isHidden.toggle()
     }
     
     @objc func eyeBtnTapped() {
