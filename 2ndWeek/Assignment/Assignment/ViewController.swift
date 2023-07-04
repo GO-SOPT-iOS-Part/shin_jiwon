@@ -121,6 +121,8 @@ class ViewController: UIViewController {
             $0.setTitle("닉네임 만들러가기", for: .normal)
             $0.setTitleColor(.tvingGray2, for: .normal)
             $0.titleLabel?.font = UIFont(name: "Pretendard-Regular", size: 14)
+            
+            $0.addTarget(self, action: #selector(makenicknameButtonTapped), for: .touchUpInside)
         }
         
     }
@@ -228,6 +230,20 @@ class ViewController: UIViewController {
         guard let id = idTextField.text else { return }
         secondVC.id = id
         self.present(secondVC, animated: true)
+    }
+    
+    @objc func makenicknameButtonTapped() {
+        let bottomSheetVC = ThirdViewController()
+        bottomSheetVC.modalPresentationStyle = .pageSheet
+        
+        let sheet = bottomSheetVC.sheetPresentationController
+        sheet?.preferredCornerRadius = 30
+        sheet?.prefersGrabberVisible = true
+        sheet?.detents = [
+            .custom { context in
+                return context.maximumDetentValue * 0.55
+            }]
+        self.present(bottomSheetVC, animated: true)
     }
 }
 

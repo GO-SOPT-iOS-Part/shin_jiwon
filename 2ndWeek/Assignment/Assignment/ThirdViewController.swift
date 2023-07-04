@@ -57,7 +57,7 @@ class ThirdViewController: UIViewController {
             $0.height.equalTo(52)
         }
         saveButton.snp.makeConstraints() {
-            
+            $0.top.equalTo(nicknameTextField.snp.bottom).offset(214)
             $0.leading.trailing.equalToSuperview().inset(20)
             $0.height.equalTo(52)
         }
