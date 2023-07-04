@@ -223,5 +223,11 @@ class ViewController: UIViewController {
         self.passwordTextField.isSecureTextEntry.toggle()
     }
     
+    @objc func loginButtonTapped() {
+        let secondVC = SecondViewController()
+        guard let id = idTextField.text else { return }
+        secondVC.id = id
+        self.present(secondVC, animated: true)
+    }
 }
 

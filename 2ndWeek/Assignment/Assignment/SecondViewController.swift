@@ -42,6 +42,8 @@ class SecondViewController: UIViewController {
             $0.titleLabel?.font = UIFont(name: "Pretendard-Bold", size: 14)
             $0.titleLabel?.textColor = .white
             $0.layer.backgroundColor = UIColor.tvingRed.cgColor
+            
+            $0.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
         }
     }
     
@@ -50,7 +52,7 @@ class SecondViewController: UIViewController {
         tvingLogoImage.snp.makeConstraints {
             $0.top.equalToSuperview().inset(58)
             $0.width.equalToSuperview()
-            $0.height.equalTo(425)
+            $0.height.equalTo(210)
         }
         showidLabel.snp.makeConstraints {
             $0.top.equalTo(tvingLogoImage.snp.bottom).offset(67)
@@ -61,5 +63,9 @@ class SecondViewController: UIViewController {
             $0.height.equalTo(52)
             $0.leading.trailing.equalToSuperview().inset(20)
         }
+    }
+    
+    @objc func backButtonTapped() {
+        self.dismiss(animated: true)
     }
 }
