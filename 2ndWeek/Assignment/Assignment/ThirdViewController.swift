@@ -66,7 +66,8 @@ class ThirdViewController: UIViewController {
     }
     
     @objc func saveButtonTapped() {
-        NotificationCenter.default.post(name: NSNotification.Name("nickNameReceived"), object: nil, userInfo: ["nickname":"\(nicknameTextField.text)"])
+        guard let nickname = nicknameTextField.text else { return }
+        NotificationCenter.default.post(name: NSNotification.Name("nickNameReceived"), object: nil, userInfo: ["nickname" : nickname])
         
         self.dismiss(animated: true)
     }

@@ -22,7 +22,7 @@ class SecondViewController: UIViewController {
         setStyle()
         setLayout()
         print("💛\(nickname)")
-        NotificationCenter.default.addObserver(self, selector: #selector(nickNameReceived(_:)), name: NSNotification.Name("nickName"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(nickNameReceived(_:)), name: NSNotification.Name("nickNameReceived"), object: nil)
         // Do any additional setup after loading the view.
     }
     
@@ -75,6 +75,7 @@ class SecondViewController: UIViewController {
     @objc
         func nickNameReceived(_ notification: NSNotification) {
             nickname = "\(notification.userInfo!["nickname"]!)"
+            
             showidLabel.text = "\(nickname) 님\n반가워요!"
             print("💛\(nickname)")
         }
