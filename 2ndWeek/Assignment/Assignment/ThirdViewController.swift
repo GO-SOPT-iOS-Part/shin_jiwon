@@ -43,6 +43,8 @@ class ThirdViewController: UIViewController {
             $0.titleLabel?.textColor = .white
             $0.layer.backgroundColor = UIColor.tvingRed.cgColor
             $0.layer.cornerRadius = 3
+            
+            $0.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
         }
     }
     
@@ -62,5 +64,10 @@ class ThirdViewController: UIViewController {
             $0.height.equalTo(52)
         }
     }
-
+    
+    @objc func saveButtonTapped() {
+        NotificationCenter.default.post(name: NSNotification.Name("nickNameReceived"), object: nil, userInfo: ["nickname":"\(nicknameTextField.text)"])
+        
+        self.dismiss(animated: true)
+    }
 }

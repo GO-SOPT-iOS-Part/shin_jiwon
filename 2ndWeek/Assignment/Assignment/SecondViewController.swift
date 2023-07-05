@@ -13,13 +13,16 @@ class SecondViewController: UIViewController {
     private var showidLabel = UILabel()
     private var backButton = UIButton()
     
-    var id : String = ""
+    var id : String?
+    var nickname : String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setStyle()
         setLayout()
+        print("💛\(nickname)")
+        NotificationCenter.default.addObserver(self, selector: #selector(nickNameReceived(_:)), name: NSNotification.Name("nickName"), object: nil)
         // Do any additional setup after loading the view.
     }
     
@@ -68,4 +71,11 @@ class SecondViewController: UIViewController {
     @objc func backButtonTapped() {
         self.dismiss(animated: true)
     }
+    
+    @objc
+        func nickNameReceived(_ notification: NSNotification) {
+            nickname = "\(notification.userInfo!["nickname"]!)"
+            showidLabel.text = "\(nickname) 님\n반가워요!"
+            print("💛\(nickname)")
+        }
 }

@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Then
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIViewControllerTransitioningDelegate {
     
     private var titleLabel = UILabel()
     
@@ -24,7 +24,7 @@ class ViewController: UIViewController {
     private var sidebar = UIView()
     
     private var noticeLabel = UILabel()
-    private var makenicknameButton = UIButton()
+    private lazy var makenicknameButton = UIButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -235,6 +235,7 @@ class ViewController: UIViewController {
     @objc func makenicknameButtonTapped() {
         let bottomSheetVC = ThirdViewController()
         bottomSheetVC.modalPresentationStyle = .pageSheet
+        bottomSheetVC.transitioningDelegate = self
         
         let sheet = bottomSheetVC.sheetPresentationController
         sheet?.preferredCornerRadius = 30
