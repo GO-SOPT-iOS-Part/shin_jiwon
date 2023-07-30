@@ -187,7 +187,6 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate {
         }
     }
     
-    
     @objc func textFieldStartChange(_ TextField: UITextField) {
         TextField.layer.borderColor = UIColor.tvingGray2.cgColor
         TextField.layer.borderWidth = 1
@@ -201,12 +200,12 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate {
             eyeButton.isHidden = true
         }
         
-        if idTextField.hasText && passwordTextField.hasText {
+        if idTextField.hasText && ((idTextField.text?.isValidEmail()) == true) && passwordTextField.hasText {
             loginButton.layer.backgroundColor = UIColor.tvingRed.cgColor
             loginButton.layer.borderColor = UIColor.tvingRed.cgColor
             loginButton.setTitleColor(.white, for: .normal)
         }
-        else if !idTextField.hasText || !passwordTextField.hasText {
+        else if !idTextField.hasText || !passwordTextField.hasText || ((idTextField.text?.isValidEmail()) == false) {
             loginButton.layer.backgroundColor = UIColor.label.cgColor
             loginButton.layer.borderColor = UIColor.tvingGray4.cgColor
             loginButton.setTitleColor(.tvingGray2, for: .normal)

@@ -36,12 +36,14 @@ class ThirdViewController: UIViewController {
             $0.textColor = .tvingGray4
             $0.font = UIFont(name: "Pretendard-Bold", size: 14)
             $0.addLeftPadding()
+            
+            $0.addTarget(self, action: #selector(textFieldStartChange), for: .editingChanged)
         }
         saveButton.then {
             $0.setTitle("저장하기", for: .normal)
             $0.titleLabel?.font = UIFont(name: "Pretendard-Bold", size: 14)
             $0.titleLabel?.textColor = .white
-            $0.layer.backgroundColor = UIColor.tvingRed.cgColor
+            $0.layer.backgroundColor = UIColor.label.cgColor
             $0.layer.cornerRadius = 3
             
             $0.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
@@ -71,5 +73,16 @@ class ThirdViewController: UIViewController {
         firstVC.nickname = nickname
         
         self.present(firstVC, animated: true)
+    }
+    
+    @objc func textFieldStartChange() {
+        if nicknameTextField.text?.isOnlyKorean() == true {
+            saveButton.layer.backgroundColor = UIColor.tvingRed.cgColor
+            saveButton.isEnabled = true
+        }
+        else {
+            saveButton.layer.backgroundColor = UIColor.label.cgColor
+            saveButton.isEnabled = false
+        }
     }
 }
