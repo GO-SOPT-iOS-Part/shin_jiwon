@@ -9,7 +9,7 @@ SOPT 32기 iOS YB 로 활동한 신지원의 과제 제출 레포지토리입니
 |:---:|:---:|:---:|
 
 ### 🍎2주차
-[2주차 세미나 복습](https://ena-is.me/47) | [2주차 실습 1](https://github.com/GO-SOPT-iOS-Part/shin_jiwon/pull/7) | [2주차 실습 2](https://github.com/GO-SOPT-iOS-Part/shin_jiwon/pull/8) | 2주차 Tving 과제 |[2주차 개념 과제](https://ena-is.me/49)
+[2주차 세미나 복습](https://ena-is.me/47) | [2주차 실습 1](https://github.com/GO-SOPT-iOS-Part/shin_jiwon/pull/7) | [2주차 실습 2](https://github.com/GO-SOPT-iOS-Part/shin_jiwon/pull/8) | [2주차 Tving 과제](https://github.com/GO-SOPT-iOS-Part/shin_jiwon/pull/9) |[2주차 개념 과제](https://ena-is.me/49)
 |:---:|:---:|:---:|:---:|:---:|
 
 
