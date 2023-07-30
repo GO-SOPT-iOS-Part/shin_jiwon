@@ -79,6 +79,8 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate {
         clearButton.then {
             $0.setImage(UIImage(named: "clearBtn"), for: .normal)
             $0.isHidden = true
+            $0.contentVerticalAlignment = .fill
+            $0.contentHorizontalAlignment = .fill
             
             $0.addTarget(self, action: #selector(clearBtnTapped(sender:)), for: .touchUpInside)
         }
@@ -86,6 +88,8 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate {
             $0.setImage(UIImage(named: "noeyeBtn"), for: .normal)
             $0.setImage(UIImage(named: "eyeBtn"), for: .selected)
             $0.isHidden = true
+            $0.contentVerticalAlignment = .fill
+            $0.contentHorizontalAlignment = .fill
             
             $0.addTarget(self, action: #selector(eyeBtnTapped), for: .touchUpInside)
         }
