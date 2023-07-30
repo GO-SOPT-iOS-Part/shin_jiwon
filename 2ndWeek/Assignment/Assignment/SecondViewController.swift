@@ -10,7 +10,7 @@ import UIKit
 class SecondViewController: UIViewController {
 
     private var tvingLogoImage = UIImageView()
-    private var showidLabel = UILabel()
+    var showIdLabel = UILabel()
     private var backButton = UIButton()
     
     var id : String?
@@ -21,20 +21,20 @@ class SecondViewController: UIViewController {
 
         setStyle()
         setLayout()
-        print("💛\(nickname)")
-        NotificationCenter.default.addObserver(self, selector: #selector(nickNameReceived(_:)), name: NSNotification.Name("nickNameReceived"), object: nil)
         // Do any additional setup after loading the view.
     }
     
     private func setStyle() {
-        view.addSubviews(tvingLogoImage,showidLabel,backButton)
+        view.addSubviews(tvingLogoImage,showIdLabel,backButton)
         view.backgroundColor = .black
         
         tvingLogoImage.then {
             $0.image = UIImage(named: "tvingLogo")
         }
-        showidLabel.then {
-            $0.text = "\(id) 님\n반가워요!"
+        showIdLabel.then {
+            guard let nickname = nickname else { return }
+            
+            $0.text = "\(nickname) 님\n반가워요!"
             $0.font = UIFont(name: "Pretendard-Bold", size: 23)
             $0.textColor = .tvingGray1
             $0.textAlignment = .center
@@ -57,7 +57,7 @@ class SecondViewController: UIViewController {
             $0.width.equalToSuperview()
             $0.height.equalTo(210)
         }
-        showidLabel.snp.makeConstraints {
+        showIdLabel.snp.makeConstraints {
             $0.top.equalTo(tvingLogoImage.snp.bottom).offset(67)
             $0.centerX.equalToSuperview()
         }
@@ -71,12 +71,4 @@ class SecondViewController: UIViewController {
     @objc func backButtonTapped() {
         self.dismiss(animated: true)
     }
-    
-    @objc
-        func nickNameReceived(_ notification: NSNotification) {
-            nickname = "\(notification.userInfo!["nickname"]!)"
-            
-            showidLabel.text = "\(nickname) 님\n반가워요!"
-            print("💛\(nickname)")
-        }
 }

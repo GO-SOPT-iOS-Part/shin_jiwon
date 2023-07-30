@@ -26,6 +26,8 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate {
     private var noticeLabel = UILabel()
     private lazy var makenicknameButton = UIButton()
     
+    var nickname : String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -228,7 +230,10 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate {
     @objc func loginButtonTapped() {
         let secondVC = SecondViewController()
         guard let id = idTextField.text else { return }
+        guard let nickname = nickname else { return }
         secondVC.id = id
+        secondVC.nickname = nickname
+        
         self.present(secondVC, animated: true)
     }
     

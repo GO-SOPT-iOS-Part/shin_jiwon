@@ -9,7 +9,7 @@ import UIKit
 
 class ThirdViewController: UIViewController {
 
-    private var inputnickcnameLabel = UILabel()
+    private var inputNickcnameLabel = UILabel()
     private var nicknameTextField = UITextField()
     private var saveButton = UIButton()
     
@@ -21,10 +21,10 @@ class ThirdViewController: UIViewController {
     }
     
     private func setStyle() {
-        view.addSubviews(inputnickcnameLabel, nicknameTextField, saveButton)
+        view.addSubviews(inputNickcnameLabel, nicknameTextField, saveButton)
         view.backgroundColor = .white
         
-        inputnickcnameLabel.then {
+        inputNickcnameLabel.then {
             $0.text = "닉네임을 입력해주세요"
             $0.textColor = .black
             $0.font = UIFont(name: "Pretendard-Bold", size: 23)
@@ -49,7 +49,7 @@ class ThirdViewController: UIViewController {
     }
     
     private func setLayout() {
-        inputnickcnameLabel.snp.makeConstraints() {
+        inputNickcnameLabel.snp.makeConstraints() {
             $0.bottom.equalTo(nicknameTextField.snp.top).offset(-21)
             $0.leading.equalTo(nicknameTextField.snp.leading)
         }
@@ -66,9 +66,10 @@ class ThirdViewController: UIViewController {
     }
     
     @objc func saveButtonTapped() {
+        let firstVC = ViewController()
         guard let nickname = nicknameTextField.text else { return }
-        NotificationCenter.default.post(name: NSNotification.Name("nickNameReceived"), object: nil, userInfo: ["nickname" : nickname])
+        firstVC.nickname = nickname
         
-        self.dismiss(animated: true)
+        self.present(firstVC, animated: true)
     }
 }
