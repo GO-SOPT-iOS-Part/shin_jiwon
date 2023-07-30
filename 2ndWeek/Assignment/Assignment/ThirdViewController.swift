@@ -72,7 +72,7 @@ class ThirdViewController: UIViewController {
         guard let nickname = nicknameTextField.text else { return }
         firstVC.nickname = nickname
         
-        self.present(firstVC, animated: true)
+        self.present(firstVC, animated: false)
     }
     
     @objc func textFieldStartChange() {

@@ -199,7 +199,7 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate {
             clearButton.isHidden = false
             eyeButton.isHidden = false
         }
-        else if !passwordTextField.hasText {
+        else {
             clearButton.isHidden = true
             eyeButton.isHidden = true
         }
@@ -224,6 +224,9 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate {
         self.passwordTextField.text = ""
         clearButton.isHidden.toggle()
         eyeButton.isHidden.toggle()
+        loginButton.layer.backgroundColor = UIColor.label.cgColor
+        loginButton.layer.borderColor = UIColor.tvingGray4.cgColor
+        loginButton.setTitleColor(.tvingGray2, for: .normal)
     }
     
     @objc func eyeBtnTapped() {
