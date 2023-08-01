@@ -127,4 +127,23 @@ class CarrotTableViewCell: UITableViewCell {
             $0.height.equalTo(30)
         }
     }
+    
+    //CarrotData 를 뿌려주는 과정
+    func configureCell(_ carrot: Carrot) {
+        
+        carrotImage.image = carrot.image
+        productLabel.text = carrot.product
+        placeLabel.text = carrot.place
+        timeLabel.text = carrot.time
+        
+        reservationLabel.text = carrot.tradeStatus.title
+        reservationLabel.backgroundColor = carrot.tradeStatus.backgroundColor
+        
+        reservationLabel.isHidden = carrot.tradeStatus == .clear
+        
+        //뒤에서 세 번째 숫자에 ',' 써주기
+        var price = String(carrot.price)
+        price.insert(",", at: price.index(price.endIndex, offsetBy: -3))
+        priceLabel.text = price + "원"
+    }
 }
