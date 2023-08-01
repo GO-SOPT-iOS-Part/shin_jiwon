@@ -61,6 +61,7 @@ class PhotoCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    
     func configureCell(_ photo: Photo) {
         
         photoImage.image = photo.image
