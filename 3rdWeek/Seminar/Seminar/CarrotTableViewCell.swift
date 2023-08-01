@@ -7,17 +7,28 @@
 
 import UIKit
 
-class CarrotTableViewCell: UITableViewCell {
+import SnapKit
+import Then
 
+class CarrotTableViewCell: UITableViewCell {
+    
     //재사용 Cell 을 등록하기 위하여 선언하는 식별자
     static let identifier = "CarrotTableViewCell"
-
+    
+    private lazy var carrotImage = UIImageView()
+    private let productLabel = UILabel()
+    private let placeLabel = UILabel()
+    private let timeLabel = UILabel()
+    private let reservationLabel = UILabel()
+    private let priceLabel = UILabel()
+    private let horizontalStackView = UIStackView()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-            super.init(style: style, reuseIdentifier: reuseIdentifier)
-            
-            setStyle()
-            setLayout()
-        }
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        setStyle()
+        setLayout()
+    }
     
     //init 만 작성하면
     //required' initializer 'init(coder:)' must be provided by subclass of 'UITableViewCell'
@@ -34,9 +45,86 @@ class CarrotTableViewCell: UITableViewCell {
     
     func setStyle() {
         
+        // separatorInset = 줄간격 없애기
+        separatorInset.left = 0
+        
+        // selectionStyle = 터치시 색상 이벤트
+        selectionStyle = .none
+        
+        carrotImage.do {
+            $0.layer.cornerRadius = 5
+        }
+        
+        productLabel.do {
+            $0.font = UIFont.systemFont(ofSize: 12)
+        }
+        
+        placeLabel.do {
+            $0.font = UIFont.boldSystemFont(ofSize: 11)
+        }
+        
+        timeLabel.do {
+            $0.font = UIFont.boldSystemFont(ofSize: 11)
+        }
+        
+        reservationLabel.do {
+            $0.textAlignment = .center
+            $0.textColor = .white
+            $0.font = UIFont.boldSystemFont(ofSize: 11)
+            $0.layer.cornerRadius = 3
+        }
+        
+        priceLabel.do {
+            $0.font = UIFont.boldSystemFont(ofSize: 13)
+        }
+        
+        horizontalStackView.do {
+            $0.axis = .horizontal
+            $0.distribution = .fill
+            $0.alignment = .center
+            $0.spacing = 5
+        }
     }
     
     func setLayout() {
         
+        [carrotImage, productLabel, placeLabel,
+         timeLabel, horizontalStackView]
+            .forEach { contentView.addSubview($0) }
+        
+        [reservationLabel, priceLabel]
+            .forEach { horizontalStackView.addArrangedSubview($0) }
+        
+        carrotImage.snp.makeConstraints {
+            $0.size.equalTo(100)
+            $0.centerY.equalToSuperview()
+            $0.leading.equalToSuperview().inset(10)
+        }
+        
+        productLabel.snp.makeConstraints {
+            $0.leading.equalTo(carrotImage.snp.trailing).offset(14)
+            $0.top.equalToSuperview().inset(10)
+        }
+        
+        placeLabel.snp.makeConstraints {
+            $0.leading.equalTo(productLabel.self)
+            $0.top.equalTo(productLabel.snp.bottom).offset(6)
+        }
+        
+        timeLabel.snp.makeConstraints {
+            $0.leading.equalTo(placeLabel.snp.trailing).offset(3)
+            $0.top.equalTo(placeLabel.self)
+        }
+        
+        reservationLabel.snp.makeConstraints {
+            $0.height.equalTo(20)
+            $0.width.equalTo(50)
+        }
+        
+        horizontalStackView.snp.makeConstraints {
+            $0.leading.equalTo(placeLabel.self)
+            $0.top.equalTo(timeLabel.snp.bottom).offset(6)
+            $0.height.equalTo(30)
+        }
     }
 }
