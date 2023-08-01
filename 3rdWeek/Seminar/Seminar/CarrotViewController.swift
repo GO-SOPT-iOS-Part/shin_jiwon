@@ -7,15 +7,28 @@
 
 import UIKit
 
-class CarrotViewController: BaseViewController {
+import SnapKit
 
+class CarrotViewController: BaseViewController {
+    
     private let tableView = UITableView()
+    
+    private let dummy = Carrot.dummy()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
-
+    
+    override func setLayout() {
+        
+        view.addSubview(tableView)
+        
+        tableView.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaInsets)
+            $0.bottom.leading.trailing.equalToSuperview()
+        }
+    }
+    
 }
 
