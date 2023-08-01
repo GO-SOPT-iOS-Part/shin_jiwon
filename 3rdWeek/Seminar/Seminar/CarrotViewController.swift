@@ -20,6 +20,14 @@ class CarrotViewController: BaseViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func setStyle() {
+        
+        tableView.do {
+            $0.register(CarrotTableViewCell.self, forCellReuseIdentifier: CarrotTableViewCell.identifier)
+            $0.rowHeight = 120
+        }
+    }
+    
     override func setLayout() {
         
         view.addSubview(tableView)
@@ -29,6 +37,5 @@ class CarrotViewController: BaseViewController {
             $0.bottom.leading.trailing.equalToSuperview()
         }
     }
-    
 }
 
