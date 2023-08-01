@@ -32,20 +32,20 @@ enum Trade {
         case .shared:
             return "나눔완료"
         case .clear:
-            return ""
+            return "거래중"
         }
     }
     
     var backgroundColor: UIColor {
         switch self {
         case .reservation:
-            return .systemGreen
+            return .gray
         case .completed:
             return .black
         case .shared:
-            return .gray
+            return .black
         case .clear:
-            return .white
+            return .systemGreen
         }
     }
 }

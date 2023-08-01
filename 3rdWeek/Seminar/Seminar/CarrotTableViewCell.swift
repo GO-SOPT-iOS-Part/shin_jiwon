@@ -139,7 +139,7 @@ class CarrotTableViewCell: UITableViewCell {
         reservationLabel.text = carrot.tradeStatus.title
         reservationLabel.backgroundColor = carrot.tradeStatus.backgroundColor
         
-        reservationLabel.isHidden = carrot.tradeStatus == .clear
+//        reservationLabel.isHidden = carrot.tradeStatus == .clear
         
         //뒤에서 세 번째 숫자에 ',' 써주기
         var price = String(carrot.price)
