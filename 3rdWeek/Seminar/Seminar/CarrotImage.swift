@@ -9,6 +9,6 @@ import UIKit.UIImage
 
 extension UIImage {
 
-    static var hypeBoy: UIImage { UIImage(named: "hypeBoy")! }
+    static var princess: UIImage { UIImage(named: "princess")! }
     
 }
