@@ -145,5 +145,6 @@ class CarrotTableViewCell: UITableViewCell {
         var price = String(carrot.price)
         price.insert(",", at: price.index(price.endIndex, offsetBy: -3))
         priceLabel.text = price + "원"
+        
     }
 }
