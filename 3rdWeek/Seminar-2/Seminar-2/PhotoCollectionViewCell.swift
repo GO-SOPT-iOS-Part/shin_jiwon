@@ -49,4 +49,10 @@ class PhotoCollectionViewCell: UICollectionViewCell {
             $0.size.equalTo(30)
         }
     }
+    
+    func configureCell(_ photo: Photo) {
+        
+        photoImage.image = photo.image
+//        isTapped = photo.heartTapped
+    }
 }
