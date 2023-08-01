@@ -79,6 +79,13 @@ extension PhotoViewController: UICollectionViewDataSource {
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCollectionViewCell.identifier, for: indexPath) as? PhotoCollectionViewCell else { return UICollectionViewCell() }
         
+        cell.configureCell(dummyCase[indexPath.item])
+        
+        cell.handler = { [weak self] in
+            guard let self else { return }
+            cell.isTapped.toggle()
+        }
+        
         return cell
     }
 }
@@ -96,7 +103,7 @@ extension PhotoViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-       
+        
         return 3
     }
 }
