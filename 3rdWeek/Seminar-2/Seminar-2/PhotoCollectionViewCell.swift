@@ -12,6 +12,16 @@ import Then
 
 class PhotoCollectionViewCell: UICollectionViewCell {
     
+    var isTapped: Bool = false {
+        didSet {
+            updateButton()
+        }
+    }
+    
+    //Closure 를 저장할 수 있는 Optional Stored Property
+    //하트버튼이 tap 되면 tap 의 유무를 closure 에 넘겨준다.
+    var handler: (() -> (Void))?
+    
     static let identifier = "PhotoCell"
     
     let photoImage = UIImageView()
@@ -32,6 +42,7 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     func setStyle() {
         button.do {
             $0.tintColor = .clear
+            $0.addTarget(self, action: #selector(heartButtonTapped), for: .touchUpInside)
         }
     }
     
@@ -53,6 +64,16 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     func configureCell(_ photo: Photo) {
         
         photoImage.image = photo.image
-//        isTapped = photo.heartTapped
+        isTapped = photo.heartTapped
+    }
+    
+    func updateButton() {
+        let image = isTapped ? "heart.fill" : "heart"
+        button.setImage(UIImage(systemName: image), for: .normal)
+    }
+    
+    @objc
+    func heartButtonTapped() {
+        handler?()
     }
 }
