@@ -41,7 +41,7 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     
     func setStyle() {
         button.do {
-            $0.tintColor = .clear
+            $0.tintColor = .white
             $0.addTarget(self, action: #selector(heartButtonTapped), for: .touchUpInside)
         }
     }
