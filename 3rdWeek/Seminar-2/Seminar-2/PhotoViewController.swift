@@ -27,15 +27,58 @@ extension Photo {
 }
 
 class PhotoViewController: UIViewController {
-
+    
+    private var dummyCase = Photo.dummy() {
+        didSet {
+            self.collectionView.reloadData()
+        }
+    }
+    
     private lazy var collectionView = UICollectionView(frame: .zero,
-                                                      collectionViewLayout: UICollectionViewFlowLayout())
+                                                       collectionViewLayout: flowLayout)
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setStyle()
+        setLayout()
         // Do any additional setup after loading the view.
     }
+    
+    func setStyle() {
+        
+        collectionView.do {
+            $0.register(PhotoCollectionViewCell.self, forCellWithReuseIdentifier: PhotoCollectionViewCell.identifier)
+            $0.showsVerticalScrollIndicator = false
+            $0.delegate = self
+            $0.dataSource = self
+        }
+    }
+    
+    func setLayout() {
+        
+        view.addSubview(collectionView)
+        
+        collectionView.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaInsets)
+            $0.leading.trailing.bottom.equalToSuperview()
+        }
+    }
+}
 
+extension PhotoViewController: UICollectionViewDelegate {}
 
+extension PhotoViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        return dummyCase.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCollectionViewCell.identifier, for: indexPath) as? PhotoCollectionViewCell else { return UICollectionViewCell() }
+        
+        return cell
+    }
 }
 
