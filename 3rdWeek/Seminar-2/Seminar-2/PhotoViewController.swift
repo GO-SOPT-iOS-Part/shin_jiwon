@@ -83,7 +83,7 @@ extension PhotoViewController: UICollectionViewDataSource {
         
         cell.handler = { [weak self] in
             guard let self else { return }
-            cell.isTapped.toggle()
+            self.dummyCase[indexPath.item].heartTapped.toggle()
         }
         
         return cell
