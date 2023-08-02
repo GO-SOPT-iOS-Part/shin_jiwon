@@ -38,9 +38,5 @@ class MypageTableView: UITableView {
             $0.isScrollEnabled = true
         }
     }
-    
-    private func setLayout() {
-        
-    }
 
 }

@@ -38,8 +38,7 @@ class MypageViewController: UIViewController, MypageHeaderViewDelegate, MypageFo
         
         rootView.delegate = self
         rootView.dataSource = self
-        
-        
+    
     }
     
 }
@@ -108,6 +107,5 @@ extension MypageViewController: UITableViewDataSource {
         }
         return cell
     }
-    
     
 }

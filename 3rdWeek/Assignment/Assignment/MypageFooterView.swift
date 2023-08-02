@@ -66,5 +66,4 @@ class MypageFooterView: UITableViewHeaderFooterView {
             $0.height.equalTo(1)
         }
     }
-
 }

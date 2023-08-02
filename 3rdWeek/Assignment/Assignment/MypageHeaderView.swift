@@ -239,5 +239,4 @@ class MypageHeaderView: UITableViewHeaderFooterView {
             }
         }
     }
-    
 }
