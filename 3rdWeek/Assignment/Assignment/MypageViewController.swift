@@ -10,12 +10,14 @@ import UIKit
 import SnapKit
 import Then
 
-class MypageViewController: UIViewController {
+class MypageViewController: UIViewController, MypageHeaderViewDelegate {
     
     private let dummy1 = MyPage.dummy1()
     private let dummy2 = MyPage.dummy2()
     
     private let rootView = MypageTableView()
+    private let headerView = MypageHeaderView()
+    private let footerView = MypageFooterView()
     
     override func loadView() {
         self.view = rootView
@@ -36,6 +38,8 @@ class MypageViewController: UIViewController {
         
         rootView.delegate = self
         rootView.dataSource = self
+        
+        
     }
     
 }
@@ -44,6 +48,12 @@ extension MypageViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 371
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: MypageHeaderView.cellIdentifier) as? MypageHeaderView else { return UIView()}
+        header.delegate = self
+        return header
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
