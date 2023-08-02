@@ -32,7 +32,7 @@ class MypageHeaderView: UITableViewHeaderFooterView {
     private let cashLabel = UILabel()
     private var myCashLabel = UILabel()
     
-    private let advertisementView = UIView()
+    let advertisementView = UIView()
     private let adTextLabel = UILabel()
     private let adTextLabel2 = UILabel()
     private let nextButton = UIButton()

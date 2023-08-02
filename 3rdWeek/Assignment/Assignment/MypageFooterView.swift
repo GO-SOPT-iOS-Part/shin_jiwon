@@ -17,7 +17,8 @@ class MypageFooterView: UITableViewHeaderFooterView {
     
     weak var delegate: MypageFooterViewDelegate?
 
-    private let logoutButton = UIButton()
+    let logoutButton = UIButton()
+    let divideLine = UIView()
     
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
@@ -33,7 +34,7 @@ class MypageFooterView: UITableViewHeaderFooterView {
     private func setStyle() {
         
         self.backgroundColor = .black
-        self.addSubview(logoutButton)
+        self.addSubviews(logoutButton, divideLine)
         
         logoutButton.do {
             $0.setTitle("로그아웃", for: .normal)
@@ -42,6 +43,10 @@ class MypageFooterView: UITableViewHeaderFooterView {
             $0.layer.borderColor = UIColor.tvingGray4.cgColor
             $0.layer.borderWidth = 1
             $0.layer.cornerRadius = 2
+        }
+        
+        divideLine.do {
+            $0.backgroundColor = .tvingGray4
         }
     }
     
@@ -52,6 +57,13 @@ class MypageFooterView: UITableViewHeaderFooterView {
             $0.centerX.equalToSuperview()
             $0.leading.equalToSuperview().inset(8)
             $0.height.equalTo(55)
+        }
+        
+        divideLine.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.centerX.equalToSuperview()
+            $0.leading.equalToSuperview().inset(8)
+            $0.height.equalTo(1)
         }
     }
 

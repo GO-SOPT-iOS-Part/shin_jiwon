@@ -47,7 +47,11 @@ class MypageViewController: UIViewController, MypageHeaderViewDelegate, MypageFo
 extension MypageViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 371
+        switch section {
+        case 0 : return 341
+        case 1 : return 0
+        default : return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -57,12 +61,21 @@ extension MypageViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 205
+        switch section {
+        case 0 : return 32
+        case 1 : return 205
+        default : return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         guard let footer = tableView.dequeueReusableHeaderFooterView(withIdentifier: MypageFooterView.cellIdentifier) as? MypageFooterView else { return UIView()}
         footer.delegate = self
+        switch section {
+        case 0 : footer.logoutButton.isHidden = true
+        case 1 : footer.divideLine.isHidden = true
+        default : print("Error")
+        }
         return footer
     }
     
@@ -73,13 +86,26 @@ extension MypageViewController: UITableViewDelegate {
 
 extension MypageViewController: UITableViewDataSource {
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+            return 2
+        }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        switch section {
+        case 0 : return dummy1.count
+        case 1 : return dummy2.count
+        default : return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MypageTableViewCell.cellIdentifier, for: indexPath) as? MypageTableViewCell else { return UITableViewCell() }
-        cell.configureCell(dummy1[indexPath.row])
+        
+        switch indexPath.section {
+        case 0 : cell.configureCell(dummy1[indexPath.row])
+        case 1 : cell.configureCell(dummy2[indexPath.row])
+        default : print("Error")
+        }
         return cell
     }
     
