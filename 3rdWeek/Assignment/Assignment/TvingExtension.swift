@@ -67,5 +67,11 @@ extension String {
     }
 }
 
+extension UITableViewHeaderFooterView {
+    
+    static var cellIdentifier  : String {
+        return String(describing: self)
+    }
+}
 
 
