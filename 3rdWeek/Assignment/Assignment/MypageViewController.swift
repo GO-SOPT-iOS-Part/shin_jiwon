@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-class MypageViewController: UIViewController, MypageHeaderViewDelegate {
+class MypageViewController: UIViewController, MypageHeaderViewDelegate, MypageFooterViewDelegate {
     
     private let dummy1 = MyPage.dummy1()
     private let dummy2 = MyPage.dummy2()
@@ -57,7 +57,13 @@ extension MypageViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 371
+        return 205
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        guard let footer = tableView.dequeueReusableHeaderFooterView(withIdentifier: MypageFooterView.cellIdentifier) as? MypageFooterView else { return UIView()}
+        footer.delegate = self
+        return footer
     }
     
     func tableView(_ tableView: UITableView, shouldScrollHorizontallyToItemAt section: Bool) -> Bool {
