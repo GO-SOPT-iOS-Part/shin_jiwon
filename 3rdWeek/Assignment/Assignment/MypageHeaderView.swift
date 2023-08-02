@@ -32,7 +32,9 @@ class MypageHeaderView: UITableViewHeaderFooterView {
     private let cashLabel = UILabel()
     private var myCashLabel = UILabel()
     
-    private let advertisementLabel = UILabel()
+    private let advertisementView = UIView()
+    private let adTextLabel = UILabel()
+    private let adTextLabel2 = UILabel()
     private let nextButton = UIButton()
     
     override init(reuseIdentifier: String?) {
@@ -52,9 +54,9 @@ class MypageHeaderView: UITableViewHeaderFooterView {
         
         self.addSubviews(backButton, alaramButton, settingButton,
                          profileImageView, profileNameLabel,profileChangeButton,
-                         myTicketCashView, advertisementLabel )
+                         myTicketCashView, advertisementView )
         myTicketCashView.addSubviews(ticketImageView, ticketLabel, myTicketLabel, cashImageView, cashLabel, myCashLabel)
-        advertisementLabel.addSubview(nextButton)
+        advertisementView.addSubviews(adTextLabel,adTextLabel2,nextButton)
         
         backButton.do {
             $0.setImage(UIImage(named: "backBtn"), for: .normal)
@@ -120,24 +122,28 @@ class MypageHeaderView: UITableViewHeaderFooterView {
             }
         }
         
-        advertisementLabel.do {
+        advertisementView.do {
             $0.backgroundColor = .tvingGray5
-            
-            let tvingImage = NSTextAttachment(image: UIImage(named: "tvNLogo") ?? UIImage())
-            let jtbcImage = NSTextAttachment(image: UIImage(named: "jtbcLogo") ?? UIImage())
-            let attributedString = NSMutableAttributedString()
-            attributedString.append(NSAttributedString(string: "이용권을 구매하고  "))
-            attributedString.append(NSAttributedString(attachment: tvingImage))
-            attributedString.append(NSAttributedString(string: "  등 인기 TV프로그램과\n\n다양한 영화 콘텐츠를 자유롭게 시청하세요!"))
-            $0.attributedText = attributedString
-        
-//            $0.textAlignment = .init(rawValue: 10) ?? <#default value#>
-            $0.textColor = .tvingGray2
-            $0.font = UIFont(name: "Pretendard-Bold", size: 12)
-//            $0.setLineSpacing(spacing: 7)
-            $0.numberOfLines = 0
             $0.layer.cornerRadius = 3
             
+            adTextLabel.do {
+                let tvingImage = NSTextAttachment(image: UIImage(named: "tvNLogo") ?? UIImage())
+                let jtbcImage = NSTextAttachment(image: UIImage(named: "jtbcLogo") ?? UIImage())
+                let attributedString = NSMutableAttributedString()
+                attributedString.append(NSAttributedString(string: "이용권을 구매하고  "))
+                attributedString.append(NSAttributedString(attachment: tvingImage))
+                attributedString.append(NSAttributedString(string: "  등 인기 TV프로그램과"))
+                $0.attributedText = attributedString
+                
+                $0.textColor = .tvingGray2
+                $0.font = UIFont(name: "Pretendard-Bold", size: 12)
+            }
+            adTextLabel2.do {
+                $0.text = "다양한 영화 콘텐츠를 자유롭게 시청하세요!"
+                $0.textColor = .tvingGray2
+                $0.font = UIFont(name: "Pretendard-Bold", size: 12)
+                
+            }
             nextButton.do {
                 $0.setImage(UIImage(named: "nextBtn"), for: .normal)
             }
@@ -212,12 +218,20 @@ class MypageHeaderView: UITableViewHeaderFooterView {
                 $0.trailing.equalTo(myTicketLabel.snp.trailing)
             }
         }
-        advertisementLabel.snp.makeConstraints {
+        advertisementView.snp.makeConstraints {
             $0.top.equalTo(myTicketCashView.snp.bottom).offset(12)
             $0.centerX.equalToSuperview()
             $0.leading.equalTo(10)
             $0.height.equalTo(60)
             
+            adTextLabel.snp.makeConstraints {
+                $0.top.equalToSuperview().inset(11)
+                $0.leading.equalToSuperview().inset(18)
+            }
+            adTextLabel2.snp.makeConstraints {
+                $0.top.equalTo(adTextLabel.snp.bottom).offset(8)
+                $0.leading.equalTo(adTextLabel.snp.leading)
+            }
             nextButton.snp.makeConstraints {
                 $0.centerY.equalToSuperview()
                 $0.trailing.equalToSuperview().inset(22)
