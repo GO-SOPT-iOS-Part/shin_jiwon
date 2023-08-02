@@ -11,7 +11,7 @@ import SnapKit
 import Then
 
 class MypageTableViewCell: UITableViewCell {
-
+    
     private var mypageTextLabel = UILabel()
     private var nextButton = UIButton()
     
@@ -29,6 +29,7 @@ class MypageTableViewCell: UITableViewCell {
     private func setStyle() {
         
         contentView.addSubviews(mypageTextLabel, nextButton)
+        contentView.backgroundColor = .black
         
         mypageTextLabel.do {
             $0.font = UIFont(name: "Pretendard-Regular", size: 15)
@@ -52,5 +53,9 @@ class MypageTableViewCell: UITableViewCell {
             $0.trailing.equalToSuperview().inset(18)
             $0.size.equalTo(18)
         }
+    }
+    
+    func configureCell(_ text: MyPage) {
+        mypageTextLabel.text = text.text
     }
 }

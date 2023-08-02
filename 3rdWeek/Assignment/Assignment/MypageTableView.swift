@@ -26,10 +26,17 @@ class MypageTableView: UITableView {
         
         self.register(MypageHeaderView.self, forHeaderFooterViewReuseIdentifier: MypageHeaderView.cellIdentifier)
         self.register(MypageFooterView.self, forHeaderFooterViewReuseIdentifier: MypageFooterView.cellIdentifier)
+        self.register(MypageTableViewCell.self, forCellReuseIdentifier: MypageTableViewCell.cellIdentifier)
     }
     
     private func setStyle() {
         
+        self.do {
+            $0.backgroundColor = .black
+            $0.showsVerticalScrollIndicator = true
+            $0.separatorStyle = .none
+            $0.isScrollEnabled = true
+        }
     }
     
     private func setLayout() {
