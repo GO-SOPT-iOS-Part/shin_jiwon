@@ -28,7 +28,7 @@ extension MyList {
 
 class HomeTabBarCell: UICollectionViewCell {
     
-    private let tabLabel = UILabel()
+    let tabLabel = UILabel()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -48,8 +48,10 @@ class HomeTabBarCell: UICollectionViewCell {
     }
     
     private func cellStyle() {
+        self.addSubviews(tabLabel)
+        
         tabLabel.do {
-            $0.font = UIFont(name: "Pretendard-Bold", size: 17)
+            $0.font = UIFont(name: "Pretendard-Regular", size: 17)
             $0.textColor = .white
             $0.textAlignment = .center
         }
