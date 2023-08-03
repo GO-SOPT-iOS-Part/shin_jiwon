@@ -14,8 +14,6 @@ class MypageTableView: UITableView {
         
         register()
         setStyle()
-        setLayout()
-        
     }
     
     required init?(coder: NSCoder) {
