@@ -1,5 +1,5 @@
 //
-//  HomeCollectionView.swift
+//  HomeTabBarCollectionView.swift
 //  Assignment
 //
 //  Created by 신지원 on 2023/08/03.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeCollectionView: UICollectionView {
+class HomeTabBarCollectionView: UICollectionView {
 
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: .zero, collectionViewLayout: UICollectionViewLayout.init())
@@ -21,16 +21,11 @@ class HomeCollectionView: UICollectionView {
     }
     
     private func register() {
-        self.register(HomeCell.self, forCellWithReuseIdentifier: HomeCell.cellIdentifier)
-        self.register(HomeLiveCell.self, forCellWithReuseIdentifier: HomeLiveCell.cellIdentifier)
-        self.register(HomeTVCell.self, forCellWithReuseIdentifier: HomeTVCell.cellIdentifier)
-        self.register(HomeMovieCell.self, forCellWithReuseIdentifier: HomeMovieCell.cellIdentifier)
-        self.register(HomeParaCell.self, forCellWithReuseIdentifier: HomeParaCell.cellIdentifier)
-        self.register(HomeKidsCell.self, forCellWithReuseIdentifier: HomeKidsCell.cellIdentifier)
+        self.register(HomeTabBarCell.self, forCellWithReuseIdentifier: HomeTabBarCell.cellIdentifier)
     }
     
     private func setStyle() {
-        self.backgroundColor = .black
+        self.backgroundColor = .clear
         self.do {
             let layout = UICollectionViewFlowLayout()
             layout.scrollDirection = .horizontal
@@ -45,4 +40,5 @@ class HomeCollectionView: UICollectionView {
             $0.isPagingEnabled = true
         }
     }
+
 }

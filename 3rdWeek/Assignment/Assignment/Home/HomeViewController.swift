@@ -55,7 +55,8 @@ extension HomeViewController : UICollectionViewDelegate {
 extension HomeViewController : UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
+        switch
+        case home
         return 6
         
     }
