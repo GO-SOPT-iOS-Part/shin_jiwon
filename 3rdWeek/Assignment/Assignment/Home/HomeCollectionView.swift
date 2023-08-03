@@ -30,6 +30,8 @@ class HomeCollectionView: UICollectionView {
     }
     
     private func setStyle() {
+        self.backgroundColor = .black
+        
         self.do {
             let layout = UICollectionViewFlowLayout()
             layout.scrollDirection = .horizontal
@@ -40,7 +42,8 @@ class HomeCollectionView: UICollectionView {
             $0.showsHorizontalScrollIndicator = false
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.contentInsetAdjustmentBehavior = .never
-            $0.decelerationRate = UIScrollView.DecelerationRate.fast
+            $0.decelerationRate = .fast
+            $0.isPagingEnabled = true
         }
     }
 }
