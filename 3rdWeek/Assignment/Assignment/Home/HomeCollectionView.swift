@@ -22,11 +22,6 @@ class HomeCollectionView: UICollectionView {
     
     private func register() {
         self.register(HomeCell.self, forCellWithReuseIdentifier: HomeCell.cellIdentifier)
-        self.register(HomeLiveCell.self, forCellWithReuseIdentifier: HomeLiveCell.cellIdentifier)
-        self.register(HomeTVCell.self, forCellWithReuseIdentifier: HomeTVCell.cellIdentifier)
-        self.register(HomeMovieCell.self, forCellWithReuseIdentifier: HomeMovieCell.cellIdentifier)
-        self.register(HomeParaCell.self, forCellWithReuseIdentifier: HomeParaCell.cellIdentifier)
-        self.register(HomeKidsCell.self, forCellWithReuseIdentifier: HomeKidsCell.cellIdentifier)
     }
     
     private func setStyle() {

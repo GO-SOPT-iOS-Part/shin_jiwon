@@ -12,6 +12,7 @@ import Then
 
 final class HomeCell: UICollectionViewCell {
     
+    private var HomeContentView = UIView()
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -30,101 +31,19 @@ final class HomeCell: UICollectionViewCell {
     }
     
     private func cellStyle() {
-        self.backgroundColor = .black
+        self.backgroundColor = .white
+        self.addSubviews(HomeContentView)
+
     }
     
     private func layout() {
-        
+        HomeContentView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
     }
     
-}
-
-final class HomeLiveCell: UICollectionViewCell {
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        cellStyle()
+    func configureCell(_ exColor : HomeColor) {
+        self.HomeContentView.backgroundColor = exColor.exColor
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    private func cellStyle() {
-        self.backgroundColor = .yellow
-        
-    }
-}
-
-final class HomeTVCell: UICollectionViewCell {
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        cellStyle()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    private func cellStyle() {
-        self.backgroundColor = .green
-        
-    }
-}
-
-final class HomeMovieCell: UICollectionViewCell {
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        cellStyle()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    private func cellStyle() {
-        self.backgroundColor = .black
-        
-    }
-}
-
-final class HomeParaCell: UICollectionViewCell {
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        cellStyle()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    private func cellStyle() {
-        self.backgroundColor = .red
-        
-    }
-}
-
-final class HomeKidsCell: UICollectionViewCell {
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        cellStyle()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    private func cellStyle() {
-        self.backgroundColor = .systemPink
-        
-    }
 }
