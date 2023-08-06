@@ -28,7 +28,7 @@ extension MyList {
 
 class HomeTabBarCell: UICollectionViewCell {
     
-    let tabLabel = UILabel()
+    let tabButton = UIButton()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -48,23 +48,23 @@ class HomeTabBarCell: UICollectionViewCell {
     }
     
     private func cellStyle() {
-        self.addSubviews(tabLabel)
+        self.addSubviews(tabButton)
         
-        tabLabel.do {
-            $0.font = UIFont(name: "Pretendard-Regular", size: 17)
-            $0.textColor = .white
-            $0.textAlignment = .center
+        tabButton.do {
+            $0.titleLabel?.font = UIFont(name: "Pretendard-Regular", size: 17)
+            $0.titleLabel?.textColor = .white
+            $0.titleLabel?.textAlignment = .center
         }
     }
     
     private func layout() {
-        tabLabel.snp.makeConstraints {
+        tabButton.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.centerX.equalToSuperview()
         }
     }
     
     func configureCell(_ text: MyList) {
-        tabLabel.text = text.text
+        tabButton.setTitle(text.text, for: .normal)
     }
 }
