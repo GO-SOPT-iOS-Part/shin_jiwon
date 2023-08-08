@@ -12,7 +12,8 @@ import Then
 
 final class HomeCell: UICollectionViewCell {
     
-    private var HomeContentView = UIView()
+    private var contentViewWrapper = UIView()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -32,18 +33,21 @@ final class HomeCell: UICollectionViewCell {
     
     private func cellStyle() {
         self.backgroundColor = .white
-        self.addSubviews(HomeContentView)
+        self.addSubviews(contentViewWrapper)
 
     }
     
     private func layout() {
-        HomeContentView.snp.makeConstraints {
+        contentViewWrapper.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
     }
     
-    func configureCell(_ exColor : HomeColor) {
-        self.HomeContentView.backgroundColor = exColor.exColor
+    func configureCell(_ contentView : HomeContentView) {
+        contentViewWrapper.addSubview(contentView.contentView)
+        contentView.contentView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
     }
     
 }

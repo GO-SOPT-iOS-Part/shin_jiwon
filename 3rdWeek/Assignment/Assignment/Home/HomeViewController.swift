@@ -11,7 +11,7 @@ class HomeViewController: UIViewController {
     
     private let rootView = HomeView()
     private let dummy = MyList.dummy()
-    private let dummyColor = HomeColor.dummyColor()
+    private let dummyColor = HomeContentView.dummyView()
     
     override func loadView() {
         self.view = rootView
@@ -59,7 +59,7 @@ extension HomeViewController : UICollectionViewDelegate {
 extension HomeViewController : UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if MyList.dummy().count == HomeColor.dummyColor().count {
+        if MyList.dummy().count == HomeContentView.dummyView().count {
             return MyList.dummy().count
         }
         else {

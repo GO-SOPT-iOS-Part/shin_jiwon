@@ -7,18 +7,24 @@
 
 import UIKit
 
-struct HomeColor {
-    let exColor : UIColor
+struct HomeContentView {
+    let contentView : UIView
 }
 
-extension HomeColor {
-    
-    static func dummyColor() -> [HomeColor] {
-        return [HomeColor(exColor: UIColor.systemRed),
-                HomeColor(exColor: UIColor.systemBlue),
-                HomeColor(exColor: UIColor.systemCyan),
-                HomeColor(exColor: UIColor.systemPink),
-                HomeColor(exColor: UIColor.systemGray),
-                HomeColor(exColor: UIColor.systemBrown)]
+extension HomeContentView {
+    static func dummyView() -> [HomeContentView] {
+        let homeMainView = HomeMainView()
+        let homeLiveView = HomeLiveView()
+        let homeTVView = HomeTVView()
+        let homeMovieView = HomeMovieView()
+        let homeParaView = HomeParaView()
+        let homeKidsView = HomeKidsView()
+        
+        return [HomeContentView(contentView: homeMainView),
+                HomeContentView(contentView: homeLiveView),
+                HomeContentView(contentView: homeTVView),
+                HomeContentView(contentView: homeMovieView),
+                HomeContentView(contentView: homeParaView),
+                HomeContentView(contentView: homeKidsView)]
     }
 }
