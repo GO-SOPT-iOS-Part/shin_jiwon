@@ -43,6 +43,12 @@ class HomeTabBarCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override var isSelected: Bool {
+        didSet {
+            tabLabel.font = isSelected ? UIFont(name: "Pretendard-Bold", size: 17) : UIFont(name: "Pretendard-Regular", size: 17)
+        }
+    }
+    
     private func target() {
         
     }

@@ -7,8 +7,15 @@
 
 import UIKit
 
+protocol findIndexDelegate : AnyObject {
+    func tapBarIndexCell(indexPath : IndexPath)
+    func contentIndexCell(indexPath : IndexPath)
+}
+
 class HomeTabBarCollectionView: UICollectionView {
 
+    var tabBarIndexDelegate : findIndexDelegate?
+    
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: .zero, collectionViewLayout: UICollectionViewLayout.init())
         

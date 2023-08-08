@@ -59,15 +59,12 @@ extension HomeViewController : UICollectionViewDelegate {
 extension HomeViewController : UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        switch collectionView {
-        case rootView.tabBarView :
+        if MyList.dummy().count == HomeColor.dummyColor().count {
             return MyList.dummy().count
-        case rootView.contentView :
-            return HomeColor.dummyColor().count
-        default:
+        }
+        else {
             return 0
         }
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -116,6 +113,14 @@ extension HomeViewController : UICollectionViewDelegateFlowLayout {
         }
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("\(indexPath.section), \(indexPath.row)")
+        if collectionView == rootView.tabBarView {
+            rootView.tabBarView.tabBarIndexDelegate?.tapBarIndexCell(indexPath: indexPath)
+            rootView.contentView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
+        }
+        else if collectionView == rootView.contentView {
+            rootView.contentView.contentIndexDelegate?.contentIndexCell(indexPath: indexPath)
+            rootView.tabBarView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
+            rootView.tabBarView.selectItem(at: indexPath, animated: false, scrollPosition: .centeredHorizontally)
+        }
     }
 }
