@@ -55,11 +55,13 @@ final class HomeView: UIView {
         tabBarView.snp.makeConstraints {
             $0.top.equalToSuperview().inset(99)
             $0.width.equalToSuperview()
-            $0.height.equalTo(41)
+            $0.height.equalTo(54)
         }
         
         contentView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.top.equalToSuperview()
+            $0.width.equalToSuperview()
+            $0.bottom.equalToSuperview().inset(50)
         }
         
     }

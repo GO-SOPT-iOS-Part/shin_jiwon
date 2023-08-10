@@ -39,7 +39,7 @@ class HomeTabBarCollectionView: UICollectionView {
             
             $0.collectionViewLayout = layout
             $0.frame = .init()
-            $0.showsVerticalScrollIndicator = true
+            $0.showsVerticalScrollIndicator = false
             $0.showsHorizontalScrollIndicator = false
             $0.translatesAutoresizingMaskIntoConstraints = false
 //            $0.contentInsetAdjustmentBehavior = .never

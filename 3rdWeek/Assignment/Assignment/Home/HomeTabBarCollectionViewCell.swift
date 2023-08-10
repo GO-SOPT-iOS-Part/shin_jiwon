@@ -29,6 +29,7 @@ extension MyList {
 class HomeTabBarCell: UICollectionViewCell {
     
     let tabLabel = UILabel()
+    let tabBar = UILabel()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -46,6 +47,7 @@ class HomeTabBarCell: UICollectionViewCell {
     override var isSelected: Bool {
         didSet {
             tabLabel.font = isSelected ? UIFont(name: "Pretendard-Bold", size: 17) : UIFont(name: "Pretendard-Regular", size: 17)
+            tabBar.backgroundColor = isSelected ? UIColor.white : UIColor.clear
         }
     }
     
@@ -54,12 +56,16 @@ class HomeTabBarCell: UICollectionViewCell {
     }
     
     private func cellStyle() {
-        self.addSubviews(tabLabel)
+        self.addSubviews(tabLabel, tabBar)
         
         tabLabel.do {
             $0.font = UIFont(name: "Pretendard-Regular", size: 17)
             $0.textColor = .white
             $0.textAlignment = .center
+        }
+        
+        tabBar.do {
+            $0.backgroundColor = .clear
         }
     }
     
@@ -67,6 +73,13 @@ class HomeTabBarCell: UICollectionViewCell {
         tabLabel.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.centerX.equalToSuperview()
+        }
+        
+        tabBar.snp.makeConstraints {
+            $0.top.equalTo(tabLabel.snp.bottom).offset(13)
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(tabLabel.snp.width)
+            $0.height.equalTo(3)
         }
     }
     

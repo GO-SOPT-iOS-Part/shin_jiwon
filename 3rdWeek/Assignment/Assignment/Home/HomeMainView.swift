@@ -62,12 +62,14 @@ class HomeMainView: UIView {
         
         self.backgroundColor = .black
         self.addSubview(mainScrollView)
-//        mainScrollView.addSubview(contentView)
         mainScrollView.addSubviews(firstCollectionView,
                                    secondLabel, secondCollectionView,
                                    thirdLabel, thirdCollectionView,
                                    fourthLabel, fourthCollectionView)
         
+        mainScrollView.do {
+            $0.showsVerticalScrollIndicator = false
+        }
         secondLabel.do {
             $0.text = "티빙에서 꼭 봐야하는 콘텐츠"
             $0.textColor = .white
@@ -131,7 +133,7 @@ class HomeMainView: UIView {
                 $0.top.equalTo(fourthLabel.snp.bottom).offset(14)
                 $0.width.equalToSuperview()
                 $0.height.equalTo(58)
-                $0.bottom.equalToSuperview()
+                $0.bottom.equalToSuperview().inset(50)
             }
         }
     }
@@ -209,5 +211,6 @@ extension HomeMainView : UICollectionViewDelegateFlowLayout {
             return 0.0
         }
     }
+    
 }
 

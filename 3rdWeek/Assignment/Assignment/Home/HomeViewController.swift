@@ -113,16 +113,4 @@ extension HomeViewController : UICollectionViewDelegateFlowLayout {
             return 0
         }
     }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if collectionView == rootView.tabBarView {
-            rootView.tabBarView.tabBarIndexDelegate?.tapBarIndexCell(indexPath: indexPath)
-            rootView.contentView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
-        }
-        else if collectionView == rootView.contentView {
-            rootView.contentView.contentIndexDelegate?.contentIndexCell(indexPath: indexPath)
-            rootView.tabBarView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
-            rootView.tabBarView.selectItem(at: indexPath, animated: false, scrollPosition: .centeredHorizontally)
-        }
-    }
 }
