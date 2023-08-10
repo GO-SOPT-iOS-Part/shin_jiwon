@@ -49,5 +49,4 @@ final class HomeCell: UICollectionViewCell {
             $0.edges.equalToSuperview()
         }
     }
-    
 }

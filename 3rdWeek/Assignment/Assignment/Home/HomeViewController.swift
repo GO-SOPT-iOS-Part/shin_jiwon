@@ -10,8 +10,9 @@ import UIKit
 class HomeViewController: UIViewController {
     
     private let rootView = HomeView()
+    
     private let dummy = MyList.dummy()
-    private let dummyColor = HomeContentView.dummyView()
+    private let dummyView = HomeContentView.dummyView()
     
     override func loadView() {
         self.view = rootView
@@ -54,13 +55,13 @@ extension HomeViewController : UICollectionViewDelegate {
         offset = CGPoint(x: roundedIndex * cellWidthIncludingSpacing - scrollView.contentInset.left, y: -scrollView.contentInset.top)
         targetContentOffset.pointee = offset
     }
-    
 }
+
 extension HomeViewController : UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if MyList.dummy().count == HomeContentView.dummyView().count {
-            return MyList.dummy().count
+        if dummy.count == dummyView.count {
+            return dummy.count
         }
         else {
             return 0
@@ -75,7 +76,7 @@ extension HomeViewController : UICollectionViewDataSource {
             return cell
         case rootView.contentView :
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCell.cellIdentifier, for: indexPath) as? HomeCell else { return UICollectionViewCell() }
-            cell.configureCell(dummyColor[indexPath.row])
+            cell.configureCell(dummyView[indexPath.row])
             return cell
         default:
             return UICollectionViewCell()
@@ -88,11 +89,11 @@ extension HomeViewController : UICollectionViewDelegateFlowLayout {
         switch collectionView {
         case rootView.tabBarView :
             if indexPath.row == 0 {
-                var fontSize = (dummy[indexPath.row].text.count) * 15 + 18 + 28
+                let fontSize = (dummy[indexPath.row].text.count) * 15 + 18 + 28
                 return CGSize(width: fontSize, height: 27)
             }
             else {
-                var fontSize = (dummy[indexPath.row].text.count) * 14 + 28
+                let fontSize = (dummy[indexPath.row].text.count) * 14 + 28
                 return CGSize(width: fontSize, height: 27)
             }
         case rootView.contentView :
@@ -112,6 +113,7 @@ extension HomeViewController : UICollectionViewDelegateFlowLayout {
             return 0
         }
     }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == rootView.tabBarView {
             rootView.tabBarView.tabBarIndexDelegate?.tapBarIndexCell(indexPath: indexPath)

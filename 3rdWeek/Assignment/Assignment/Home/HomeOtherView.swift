@@ -9,6 +9,9 @@ import UIKit
 
 class HomeLiveView: UIView {
 
+    private var contentImage = UIImageView()
+    private var boxLabel = UILabel()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -23,19 +26,37 @@ class HomeLiveView: UIView {
     
     // MARK: - Custom Method
     
-    
     private func setStyle() {
-        self.backgroundColor = .yellow
+        self.addSubviews(contentImage, boxLabel)
+        contentImage.do {
+            $0.image = UIImage(named: "LiveImage")
+        }
+        
+        boxLabel.do {
+            $0.backgroundColor = .black
+        }
     }
     
     private func setLayout() {
+        contentImage.snp.makeConstraints {
+            $0.top.equalTo(boxLabel.snp.bottom)
+            $0.bottom.equalToSuperview()
+            $0.width.equalToSuperview()
+        }
         
+        boxLabel.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.height.equalTo(140)
+            $0.width.equalToSuperview()
+        }
     }
-
 }
 
 class HomeTVView: UIView {
 
+    private var contentImage = UIImageView()
+    private var boxLabel = UILabel()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -50,19 +71,37 @@ class HomeTVView: UIView {
     
     // MARK: - Custom Method
     
-    
     private func setStyle() {
-        self.backgroundColor = .black
+        self.addSubviews(contentImage, boxLabel)
+        contentImage.do {
+            $0.image = UIImage(named: "TvImage")
+        }
+        
+        boxLabel.do {
+            $0.backgroundColor = .black
+        }
     }
     
     private func setLayout() {
+        contentImage.snp.makeConstraints {
+            $0.top.equalTo(boxLabel.snp.bottom)
+            $0.bottom.equalToSuperview()
+            $0.width.equalToSuperview()
+        }
         
+        boxLabel.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.height.equalTo(140)
+            $0.width.equalToSuperview()
+        }
     }
-
 }
 
 class HomeMovieView: UIView {
 
+    private var contentImage = UIImageView()
+    private var boxLabel = UILabel()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -77,19 +116,37 @@ class HomeMovieView: UIView {
     
     // MARK: - Custom Method
     
-    
     private func setStyle() {
-        self.backgroundColor = .orange
+        self.addSubviews(contentImage, boxLabel)
+        contentImage.do {
+            $0.image = UIImage(named: "MovieImage")
+        }
+        
+        boxLabel.do {
+            $0.backgroundColor = .black
+        }
     }
     
     private func setLayout() {
+        contentImage.snp.makeConstraints {
+            $0.top.equalTo(boxLabel.snp.bottom)
+            $0.bottom.equalToSuperview()
+            $0.width.equalToSuperview()
+        }
         
+        boxLabel.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.height.equalTo(140)
+            $0.width.equalToSuperview()
+        }
     }
-
 }
 
 class HomeParaView: UIView {
 
+    private var contentImage = UIImageView()
+    private var boxLabel = UILabel()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -104,19 +161,37 @@ class HomeParaView: UIView {
     
     // MARK: - Custom Method
     
-    
     private func setStyle() {
-        self.backgroundColor = .cyan
+        self.addSubviews(contentImage, boxLabel)
+        contentImage.do {
+            $0.image = UIImage(named: "ParaImage")
+        }
+        
+        boxLabel.do {
+            $0.backgroundColor = .black
+        }
     }
     
     private func setLayout() {
+        contentImage.snp.makeConstraints {
+            $0.top.equalTo(boxLabel.snp.bottom)
+            $0.bottom.equalToSuperview()
+            $0.width.equalToSuperview()
+        }
         
+        boxLabel.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.height.equalTo(140)
+            $0.width.equalToSuperview()
+        }
     }
-
 }
 
 class HomeKidsView: UIView {
-
+    
+    private var contentImage = UIImageView()
+    private var boxLabel = UILabel()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -131,15 +206,28 @@ class HomeKidsView: UIView {
     
     // MARK: - Custom Method
     
-    
     private func setStyle() {
-        self.backgroundColor = .gray
+        self.addSubviews(contentImage, boxLabel)
+        contentImage.do {
+            $0.image = UIImage(named: "KidsImage")
+        }
+        
+        boxLabel.do {
+            $0.backgroundColor = .black
+        }
     }
     
     private func setLayout() {
+        contentImage.snp.makeConstraints {
+            $0.top.equalTo(boxLabel.snp.bottom)
+            $0.bottom.equalToSuperview()
+            $0.width.equalToSuperview()
+        }
         
+        boxLabel.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.height.equalTo(140)
+            $0.width.equalToSuperview()
+        }
     }
-
 }
-
-

@@ -42,7 +42,7 @@ class HomeTabBarCollectionView: UICollectionView {
             $0.showsVerticalScrollIndicator = true
             $0.showsHorizontalScrollIndicator = false
             $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.contentInsetAdjustmentBehavior = .never
+//            $0.contentInsetAdjustmentBehavior = .never
             $0.decelerationRate = .fast
             $0.isPagingEnabled = true
         }
