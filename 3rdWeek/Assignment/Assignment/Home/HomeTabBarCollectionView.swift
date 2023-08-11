@@ -7,14 +7,7 @@
 
 import UIKit
 
-protocol findIndexDelegate : AnyObject {
-    func tapBarIndexCell(indexPath : IndexPath)
-    func contentIndexCell(indexPath : IndexPath)
-}
-
 class HomeTabBarCollectionView: UICollectionView {
-
-    var tabBarIndexDelegate : findIndexDelegate?
     
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: .zero, collectionViewLayout: UICollectionViewLayout.init())
@@ -42,10 +35,9 @@ class HomeTabBarCollectionView: UICollectionView {
             $0.showsVerticalScrollIndicator = false
             $0.showsHorizontalScrollIndicator = false
             $0.translatesAutoresizingMaskIntoConstraints = false
-//            $0.contentInsetAdjustmentBehavior = .never
             $0.decelerationRate = .fast
             $0.isPagingEnabled = true
         }
     }
-
+    
 }

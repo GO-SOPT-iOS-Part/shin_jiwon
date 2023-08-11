@@ -15,7 +15,7 @@ final class HomeView: UIView {
     // MARK: - UI Components
     
     public lazy var tabBarView = HomeTabBarCollectionView()
-    public lazy var contentView = HomeCollectionView()
+    public lazy var homeContentView = HomeCollectionView()
     
     // MARK: - Life Cycle
     
@@ -37,13 +37,13 @@ final class HomeView: UIView {
     private func setStyle() {
         
         self.backgroundColor = .black
-        self.addSubviews(contentView, tabBarView)
+        self.addSubviews(homeContentView, tabBarView)
         
         tabBarView.do {
             $0.backgroundColor = .clear
         }
         
-        contentView.do {
+        homeContentView.do {
             $0.backgroundColor = .black
         }
         
@@ -58,7 +58,7 @@ final class HomeView: UIView {
             $0.height.equalTo(54)
         }
         
-        contentView.snp.makeConstraints {
+        homeContentView.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.width.equalToSuperview()
             $0.bottom.equalToSuperview().inset(50)

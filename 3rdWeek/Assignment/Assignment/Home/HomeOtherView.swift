@@ -46,7 +46,7 @@ class HomeLiveView: UIView {
         
         boxLabel.snp.makeConstraints {
             $0.top.equalToSuperview()
-            $0.height.equalTo(140)
+            $0.height.equalTo(180)
             $0.width.equalToSuperview()
         }
     }
@@ -91,7 +91,7 @@ class HomeTVView: UIView {
         
         boxLabel.snp.makeConstraints {
             $0.top.equalToSuperview()
-            $0.height.equalTo(140)
+            $0.height.equalTo(180)
             $0.width.equalToSuperview()
         }
     }
@@ -136,7 +136,7 @@ class HomeMovieView: UIView {
         
         boxLabel.snp.makeConstraints {
             $0.top.equalToSuperview()
-            $0.height.equalTo(140)
+            $0.height.equalTo(180)
             $0.width.equalToSuperview()
         }
     }
@@ -181,7 +181,7 @@ class HomeParaView: UIView {
         
         boxLabel.snp.makeConstraints {
             $0.top.equalToSuperview()
-            $0.height.equalTo(140)
+            $0.height.equalTo(180)
             $0.width.equalToSuperview()
         }
     }
@@ -226,7 +226,7 @@ class HomeKidsView: UIView {
         
         boxLabel.snp.makeConstraints {
             $0.top.equalToSuperview()
-            $0.height.equalTo(140)
+            $0.height.equalTo(180)
             $0.width.equalToSuperview()
         }
     }

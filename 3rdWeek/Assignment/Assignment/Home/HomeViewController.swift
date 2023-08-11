@@ -23,6 +23,8 @@ class HomeViewController: UIViewController {
         
         target()
         delegate()
+        
+        setTabbar()
     }
     
     private func target() {
@@ -32,8 +34,14 @@ class HomeViewController: UIViewController {
     private func delegate() {
         rootView.tabBarView.delegate = self
         rootView.tabBarView.dataSource = self
-        rootView.contentView.delegate = self
-        rootView.contentView.dataSource = self
+        rootView.homeContentView.delegate = self
+        rootView.homeContentView.dataSource = self
+    }
+    
+    private func setTabbar() { // 처음을 Home으로 고정
+        let firstIndexPath = IndexPath(item: 0, section: 0)
+        rootView.tabBarView.selectItem(at: firstIndexPath, animated: false, scrollPosition: .right)
+        rootView.homeContentView.selectItem(at: firstIndexPath, animated: false, scrollPosition: .right)
     }
 }
 
@@ -41,19 +49,21 @@ extension HomeViewController : UICollectionViewDelegate {
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         
-        guard let layout = rootView.contentView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
-        let cellWidthIncludingSpacing = layout.itemSize.width + layout.minimumLineSpacing
-        var offset = targetContentOffset.pointee
-        let index = (offset.x + scrollView.contentInset.left) / cellWidthIncludingSpacing
-        var roundedIndex = round(index)
-        if scrollView.contentOffset.x > targetContentOffset.pointee.x {
-            roundedIndex = floor(index)
+        //contentView 를 눌렀을 때 tabBarView 이동
+        if scrollView == rootView.homeContentView {
+            let index = Int(targetContentOffset.pointee.x / rootView.homeContentView.frame.width)
+            let indexPath = IndexPath(item: index, section: 0)
+            
+            rootView.tabBarView.selectItem(at: indexPath, animated: true, scrollPosition: .bottom)
         }
-        else {
-            roundedIndex = ceil(index)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == rootView.tabBarView {
+            rootView.homeContentView.isPagingEnabled = false
+            rootView.homeContentView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+            rootView.homeContentView.isPagingEnabled = true
         }
-        offset = CGPoint(x: roundedIndex * cellWidthIncludingSpacing - scrollView.contentInset.left, y: -scrollView.contentInset.top)
-        targetContentOffset.pointee = offset
     }
 }
 
@@ -74,7 +84,7 @@ extension HomeViewController : UICollectionViewDataSource {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeTabBarCell.cellIdentifier, for: indexPath) as? HomeTabBarCell else { return UICollectionViewCell() }
             cell.configureCell(dummy[indexPath.row])
             return cell
-        case rootView.contentView :
+        case rootView.homeContentView :
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCell.cellIdentifier, for: indexPath) as? HomeCell else { return UICollectionViewCell() }
             cell.configureCell(dummyView[indexPath.row])
             return cell
@@ -96,7 +106,7 @@ extension HomeViewController : UICollectionViewDelegateFlowLayout {
                 let fontSize = (dummy[indexPath.row].text.count) * 14 + 28
                 return CGSize(width: fontSize, height: 27)
             }
-        case rootView.contentView :
+        case rootView.homeContentView :
             return CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         default:
             return CGSize.zero
@@ -107,7 +117,7 @@ extension HomeViewController : UICollectionViewDelegateFlowLayout {
         switch collectionView {
         case rootView.tabBarView :
             return 28.0
-        case rootView.contentView :
+        case rootView.homeContentView :
             return 0
         default:
             return 0

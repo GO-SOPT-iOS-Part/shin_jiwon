@@ -15,7 +15,6 @@ class HomeMainView: UIView {
     // MARK: - UI Components
     
     public lazy var mainScrollView = UIScrollView()
-    let contentView = UIView()
     public lazy var firstCollectionView = FirstCollectionView()
     
     private var secondLabel = UILabel()
@@ -56,6 +55,7 @@ class HomeMainView: UIView {
         thirdCollectionView.dataSource = self
         fourthCollectionView.delegate = self
         fourthCollectionView.dataSource = self
+        
     }
     
     private func setStyle() {
@@ -70,6 +70,7 @@ class HomeMainView: UIView {
         mainScrollView.do {
             $0.showsVerticalScrollIndicator = false
         }
+        
         secondLabel.do {
             $0.text = "티빙에서 꼭 봐야하는 콘텐츠"
             $0.textColor = .white
@@ -211,6 +212,5 @@ extension HomeMainView : UICollectionViewDelegateFlowLayout {
             return 0.0
         }
     }
-    
 }
 
