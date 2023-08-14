@@ -36,7 +36,7 @@ class HomeTabBarCollectionView: UICollectionView {
             $0.showsHorizontalScrollIndicator = false
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.decelerationRate = .fast
-            $0.isPagingEnabled = true
+//            $0.isPagingEnabled = true
         }
     }
     

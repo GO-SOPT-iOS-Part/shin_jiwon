@@ -9,6 +9,8 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
+    private var direction = 0
+    
     private let rootView = HomeView()
     
     private let dummy = MyList.dummy()
@@ -49,21 +51,37 @@ extension HomeViewController : UICollectionViewDelegate {
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         
-        //contentView 를 눌렀을 때 tabBarView 이동
+        //contentView 를 drag 할 때 tabBarView 이동
         if scrollView == rootView.homeContentView {
             let index = Int(targetContentOffset.pointee.x / rootView.homeContentView.frame.width)
             let indexPath = IndexPath(item: index, section: 0)
             
-            rootView.tabBarView.selectItem(at: indexPath, animated: true, scrollPosition: .bottom)
+            rootView.tabBarView.selectItem(at: indexPath, animated: true, scrollPosition: .left)
+            
+            if direction > 0 {
+                rootView.tabBarView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)}
+            
+            else {
+                rootView.tabBarView.scrollToItem(at: indexPath, at: .left, animated: true)}
         }
     }
     
+    //tabBar 눌렀을 때 contentView 이동
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == rootView.tabBarView {
             rootView.homeContentView.isPagingEnabled = false
             rootView.homeContentView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
             rootView.homeContentView.isPagingEnabled = true
         }
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let velocity = scrollView.panGestureRecognizer.velocity(in: scrollView)
+        
+        if velocity.x < 0 {
+            direction = -1 }
+        else if velocity.x > 0 {
+            direction = 1 }
     }
 }
 
@@ -95,6 +113,7 @@ extension HomeViewController : UICollectionViewDataSource {
 }
 
 extension HomeViewController : UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch collectionView {
         case rootView.tabBarView :
