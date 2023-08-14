@@ -1,8 +1,8 @@
 //
 //  SceneDelegate.swift
-//  Assignment
+//  Seminar
 //
-//  Created by 신지원 on 2023/08/02.
+//  Created by 신지원 on 2023/08/15.
 //
 
 import UIKit
@@ -12,13 +12,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        guard let windowScene = (scene as? UIWindowScene) else { return }
-        self.window = UIWindow(windowScene: windowScene)
-        let navigationController = UINavigationController(rootViewController: MypageViewController())
-        navigationController.navigationBar.isHidden = true
-        self.window?.rootViewController = navigationController
-        self.window?.makeKeyAndVisible()
-    }
+        
+            guard let windowScene = (scene as? UIWindowScene) else { return }
+            window = UIWindow(windowScene: windowScene)
+            window?.rootViewController = UINavigationController(rootViewController: WeatherViewController())
+            window?.makeKeyAndVisible()
+        }
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
