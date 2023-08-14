@@ -65,5 +65,17 @@ class WeatherTableViewCell: UITableViewCell {
             $0.top.equalTo(temperLabel).offset(20)
             $0.trailing.equalTo(cityLabel).inset(10)
         }
+
+    }
+
+    func configureCell(_ weather: Weathers) {
+        guard let icon = weather.weather.first?.icon else { return }
+        let url = "http://openweathermap.org/img/wn/\(icon).png"
+        print("🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰")
+        print(url)
+        weatherImage.kfSetImage(url: url)
+        cityLabel.text = String(weather.name)
+        temperLabel.text = "현재 온도 : " + String(weather.main.temp) + "°C"
+        humidityLabel.text = "습도 : " + String(weather.main.humidity) + "%"
     }
 }

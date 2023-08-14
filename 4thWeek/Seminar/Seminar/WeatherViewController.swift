@@ -15,11 +15,34 @@ class WeatherViewController : UIViewController {
     let cities = ["gongju", "gwangju", "gumi", "gunsan", "daegu", "daejeon", "mokpo", "busan", "seosan", "seoul", "sokcho", "suwon", "suncheon", "ulsan", "iksan", "jeonju", "jeju", "cheonan", "cheongju", "chuncheon"]
 
     private let tableView = UITableView()
+    private var cityWeather: Weather?
+    private var weatherdummy: [Weathers] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        getWeathers(cities: cities)
         setStyle()
         setLayout()
+    }
+
+    func getWeathers(cities : [String]) {
+        for i in cities {
+            WeatherService.shared.getWeather(city: i) {
+                response in
+                //print(response)
+                switch response {
+                case .success(let data):
+                    guard let data = data as? Weathers else {
+                        return
+                    }
+                    self.weatherdummy.append(data)
+                    self.loadData();
+
+                default:
+                    return
+                }
+            }
+        }
     }
 
     func loadData() {
@@ -53,13 +76,15 @@ class WeatherViewController : UIViewController {
 extension WeatherViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
+        return weatherdummy.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         guard let cell = tableView.dequeueReusableCell(withIdentifier: WeatherTableViewCell.identifier, for: indexPath) as? WeatherTableViewCell else { return UITableViewCell() }
-        
+
+        cell.configureCell(weatherdummy[indexPath.row])
+
         return cell
     }
 }
