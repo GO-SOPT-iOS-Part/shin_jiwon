@@ -29,7 +29,6 @@ class WeatherViewController : UIViewController {
         for i in cities {
             WeatherService.shared.getWeather(city: i) {
                 response in
-                //print(response)
                 switch response {
                 case .success(let data):
                     guard let data = data as? Weathers else {

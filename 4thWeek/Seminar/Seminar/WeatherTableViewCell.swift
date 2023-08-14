@@ -71,7 +71,6 @@ class WeatherTableViewCell: UITableViewCell {
     func configureCell(_ weather: Weathers) {
         guard let icon = weather.weather.first?.icon else { return }
         let url = "http://openweathermap.org/img/wn/\(icon).png"
-        print("🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰")
         print(url)
         weatherImage.kfSetImage(url: url)
         cityLabel.text = String(weather.name)
