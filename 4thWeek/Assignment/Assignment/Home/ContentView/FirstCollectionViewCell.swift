@@ -9,10 +9,12 @@ import UIKit
 
 import SnapKit
 import Then
+import Kingfisher
 
 final class FirstCell : UICollectionViewCell {
 
-    private var exLabel = UIView()
+    private var imageURL: URL?
+    private var movieImage = UIImageView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -27,19 +29,20 @@ final class FirstCell : UICollectionViewCell {
     }
     
     private func cellStyle() {
-        contentView.addSubview(exLabel)
-        exLabel.do {
+        contentView.addSubview(movieImage)
+        movieImage.do {
             $0.backgroundColor = .gray
         }
     }
     
     private func layout() {
-        exLabel.snp.makeConstraints {
+        movieImage.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
     }
     
-    func configureCell(_ contentView : MyContentView) {
-        exLabel.backgroundColor = contentView.color
+    func configureCell(_ results: Results){
+        imageURL = URL(string: "https://image.tmdb.org/t/p/original/" + (results.poster_path ?? "") ) ?? nil
+        movieImage.kf.setImage(with: imageURL)
     }
 }
