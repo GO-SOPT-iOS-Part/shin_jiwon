@@ -142,17 +142,17 @@ class HomeMainView: UIView {
     }
     
     private func getMovie() {
-            MovieService.shared.getMovie() { response in
-                switch response {
-                case .success(let data):
-                    guard let data = data as? MovieResponse else { return }
-                    self.responseData = data.results
-                    self.firstCollectionView.reloadData()
-                default:
-                    return
-                }
+        MovieService.shared.getMovie() { response in
+            switch response {
+            case .success(let data):
+                guard let data = data as? MovieResponse else { return }
+                self.responseData = data.results
+                self.firstCollectionView.reloadData()
+            default:
+                return
             }
         }
+    }
 }
 
 extension HomeMainView : UICollectionViewDelegate {
