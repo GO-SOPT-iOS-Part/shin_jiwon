@@ -27,6 +27,7 @@ class HomeMainView: UIView {
     public lazy var fourthCollectionView = FourthCollectionView()
     
     private let dummyColor = MyContentView.dummy()
+    private var responseData: [Results] = []
     
     // MARK: - Life Cycle
     
@@ -38,6 +39,7 @@ class HomeMainView: UIView {
         setStyle()
         setLayout()
         
+        getMovie()
     }
     
     required init?(coder: NSCoder) {
@@ -138,6 +140,19 @@ class HomeMainView: UIView {
             }
         }
     }
+    
+    private func getMovie() {
+            MovieService.shared.getMovie() { response in
+                switch response {
+                case .success(let data):
+                    guard let data = data as? MovieResponse else { return }
+                    self.responseData = data.results
+                    self.firstCollectionView.reloadData()
+                default:
+                    return
+                }
+            }
+        }
 }
 
 extension HomeMainView : UICollectionViewDelegate {
@@ -162,14 +177,19 @@ extension HomeMainView : UICollectionViewDelegate {
 
 extension HomeMainView : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dummyColor.count
+        if collectionView == firstCollectionView {
+            return responseData.count
+        }
+        else {
+            return dummyColor.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch collectionView {
         case firstCollectionView :
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FirstCell.cellIdentifier, for: indexPath) as? FirstCell else { return UICollectionViewCell() }
-            cell.configureCell(dummyColor[indexPath.row])
+            cell.configureCell(responseData[indexPath.row])
             return cell
             
         case secondCollectionView :

@@ -30,9 +30,6 @@ final class FirstCell : UICollectionViewCell {
     
     private func cellStyle() {
         contentView.addSubview(movieImage)
-        movieImage.do {
-            $0.backgroundColor = .gray
-        }
     }
     
     private func layout() {

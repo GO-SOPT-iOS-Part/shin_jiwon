@@ -35,7 +35,7 @@ extension Config {
     
     static let APIKey: String = {
         guard let key = Config.infoDictionary[Keys.Plist.APIKey] as? String else {
-            fatalError("Base URL is not set in plist for this configuration.")
+            fatalError("APIKey is not set in plist for this configuration.")
         }
         return key
     }()
