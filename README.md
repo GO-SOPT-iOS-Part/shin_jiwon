@@ -1,8 +1,15 @@
-# SOPT 32기 iOS
+
+<br/>
+
+## SOPT 32기 iOS
+
 SOPT 32기 iOS YB 로 활동한 신지원의 과제 제출 레포지토리입니다 :)
+
+<br/>
 
 <img width="1221" alt="Sopt_iOS_커리큘럼" src="https://github.com/GO-SOPT-iOS-Part/shin_jiwon/assets/103318297/c0d59d94-eb13-443c-98c6-0a2bea1af474">
 
+<br/>
 
 ### 🍎1주차
 [1주차 세미나 복습](https://ena-is.me/69) | [1주차 실습 및 과제](https://github.com/GO-SOPT-iOS-Part/shin_jiwon/pull/5) | [1주차 개념 과제](https://ena-is.me/46)
@@ -19,7 +26,7 @@ SOPT 32기 iOS YB 로 활동한 신지원의 과제 제출 레포지토리입니
 
 
 ### 🍎4주차
-4주차 세미나 복습 | [4주차 실습](https://github.com/GO-SOPT-iOS-Part/shin_jiwon/pull/13) | 4주차 Tving 과제
+4주차 세미나 복습 | [4주차 실습](https://github.com/GO-SOPT-iOS-Part/shin_jiwon/pull/13) | [4주차 Tving 과제](https://github.com/GO-SOPT-iOS-Part/shin_jiwon/pull/14)
 |:---:|:---:|:---:|
 
 
