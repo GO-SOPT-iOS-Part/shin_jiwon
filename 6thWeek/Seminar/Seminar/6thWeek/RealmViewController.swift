@@ -5,6 +5,7 @@
 //  Created by 신지원 on 2023/08/18.
 //
 
+/*
 import UIKit
 
 import RealmSwift
@@ -46,3 +47,5 @@ class RealmViewController: UIViewController {
         print(Realm.Configuration.defaultConfiguration.fileURL!)
     }
 }
+
+*/
