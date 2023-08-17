@@ -16,12 +16,12 @@ class TabBarViewController: UITabBarController {
         let carrotViewController = CarrotViewController()
         carrotViewController.tabBarItem = UITabBarItem(title: "Carrot", image: UIImage(systemName: "flame.fill"), tag: 0)
         
-        let realmViewController = RealmViewController()
-        realmViewController.tabBarItem = UITabBarItem(title: "Favorite", image: UIImage(systemName: "flame.fill"), tag: 1)
+        let favoriteViewController = FavoriteViewController()
+        favoriteViewController.tabBarItem = UITabBarItem(title: "Favorite", image: UIImage(systemName: "flame.fill"), tag: 1)
         
         tabBar.barTintColor = .black
         tabBar.isTranslucent = false
-        setViewControllers([carrotViewController,  realmViewController].map{UINavigationController(rootViewController: $0)}, animated: false)
+        setViewControllers([carrotViewController,  favoriteViewController].map{UINavigationController(rootViewController: $0)}, animated: false)
     }
 
 }
