@@ -11,19 +11,23 @@ import RealmSwift
 
 class CarrotRealm: Object {
     
-    @Persisted(primaryKey: true) var id: Int = 0
+    @Persisted(primaryKey: true) var _id : ObjectId
+    @Persisted var imageName : String = ""
     @Persisted var product: String = ""
     @Persisted var place: String = ""
     @Persisted var time: String = ""
-//    @Persisted var tradeStatus: Trade = .clear
+    @Persisted var tradeStatus: String = ""
     @Persisted var price: Int = 0
     
-    convenience init(id: Int, product: String, place: String, time: String, price: Int) {
+    convenience init(id: Int, imageName: String, product: String, place: String, time: String, tradeStatus: String, price: Int) {
+        
         self.init()
-        self.id = id
+        
+        self.imageName = imageName
         self.product = product
         self.place = place
         self.time = time
+        self.tradeStatus = tradeStatus
         self.price = price
     }
 }
