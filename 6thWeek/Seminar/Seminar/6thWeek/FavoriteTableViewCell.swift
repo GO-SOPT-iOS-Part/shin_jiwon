@@ -22,6 +22,8 @@ class FavoriteTableViewCell: UITableViewCell {
     private let priceLabel = UILabel()
     private let horizontalStackView = UIStackView()
     
+    private let likeButton = UIButton()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -34,9 +36,9 @@ class FavoriteTableViewCell: UITableViewCell {
     }
     
     func setStyle() {
-
+        
         separatorInset.left = 0
-
+        
         selectionStyle = .none
         
         carrotImage.do {
@@ -72,12 +74,16 @@ class FavoriteTableViewCell: UITableViewCell {
             $0.alignment = .center
             $0.spacing = 5
         }
+        
+        likeButton.do {
+            $0.tintColor = .systemPink
+        }
     }
     
     func setLayout() {
         
         [carrotImage, productLabel, placeLabel,
-         timeLabel, horizontalStackView]
+         timeLabel, horizontalStackView, likeButton]
             .forEach { contentView.addSubview($0) }
         
         [reservationLabel, priceLabel]
@@ -114,17 +120,38 @@ class FavoriteTableViewCell: UITableViewCell {
             $0.top.equalTo(timeLabel.snp.bottom).offset(6)
             $0.height.equalTo(30)
         }
+        
+        likeButton.snp.makeConstraints() {
+            $0.trailing.equalToSuperview().inset(20)
+            $0.centerY.equalToSuperview()
+            $0.size.equalTo(40)
+        }
     }
     
-    func configureCell(_ carrot: Carrot) {
+    func configureCell(_ carrot: CarrotRealm) {
         
-        carrotImage.image = carrot.image
+        carrotImage.image = UIImage(named: carrot.imageName)
         productLabel.text = carrot.product
         placeLabel.text = carrot.place
         timeLabel.text = carrot.time
         
-        reservationLabel.text = carrot.tradeStatus.title
-        reservationLabel.backgroundColor = carrot.tradeStatus.backgroundColor
+        reservationLabel.text = carrot.tradeStatus
+        switch carrot.tradeStatus {
+        case ".reservation":
+            reservationLabel.text = "예약중"
+            reservationLabel.backgroundColor = .gray
+        case ".completed":
+            reservationLabel.text = "거래완료"
+            reservationLabel.backgroundColor = .black
+        case ".shared":
+            reservationLabel.text = "나눔완료"
+            reservationLabel.backgroundColor = .black
+        case ".clear":
+            reservationLabel.text = "거래중"
+            reservationLabel.backgroundColor = .systemGreen
+        default:
+            reservationLabel.text = ""
+        }
         
         var price = String(carrot.price)
         price.insert(",", at: price.index(price.endIndex, offsetBy: -3))

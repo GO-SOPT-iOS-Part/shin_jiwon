@@ -9,8 +9,15 @@ import UIKit
 
 import SnapKit
 import Then
+import RealmSwift
 
 class CarrotViewController: BaseViewController {
+    
+    private lazy var realmDummy: [CarrotRealm] = getRealm() {
+            didSet {
+                self.tableView.reloadData()
+            }
+        }
     
     private let tableView = UITableView()
     
@@ -20,6 +27,16 @@ class CarrotViewController: BaseViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
+    
+    private func getRealm() -> [CarrotRealm] {
+            let realm = try! Realm()
+            let result = realm.objects(CarrotRealm.self)
+            var array: [CarrotRealm] = []
+            result.forEach {
+                array.append($0)
+            }
+            return array
+        }
     
     override func setStyle() {
         

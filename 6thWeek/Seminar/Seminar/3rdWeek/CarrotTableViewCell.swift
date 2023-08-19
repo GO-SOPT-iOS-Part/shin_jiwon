@@ -12,6 +12,14 @@ import Then
 
 class CarrotTableViewCell: UITableViewCell {
     
+    var isTapped: Bool = false {
+            didSet {
+                tapped()
+            }
+        }
+    
+    var handler: (() -> (Void))?
+    
     //재사용 Cell 을 등록하기 위하여 선언하는 식별자
     static let identifier = "CarrotTableViewCell"
     
@@ -22,6 +30,8 @@ class CarrotTableViewCell: UITableViewCell {
     private let reservationLabel = UILabel()
     private let priceLabel = UILabel()
     private let horizontalStackView = UIStackView()
+    
+    private let likeButton = UIButton()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -84,12 +94,17 @@ class CarrotTableViewCell: UITableViewCell {
             $0.alignment = .center
             $0.spacing = 5
         }
+        
+        likeButton.do {
+            $0.tintColor = .yellow
+            $0.addTarget(self, action: #selector(likeButtonTapped), for: .touchUpInside)
+        }
     }
     
     func setLayout() {
         
         [carrotImage, productLabel, placeLabel,
-         timeLabel, horizontalStackView]
+         timeLabel, horizontalStackView, likeButton]
             .forEach { contentView.addSubview($0) }
         
         [reservationLabel, priceLabel]
@@ -126,6 +141,22 @@ class CarrotTableViewCell: UITableViewCell {
             $0.top.equalTo(timeLabel.snp.bottom).offset(6)
             $0.height.equalTo(30)
         }
+        
+        likeButton.snp.makeConstraints() {
+            $0.trailing.equalToSuperview().inset(20)
+            $0.centerY.equalToSuperview()
+            $0.size.equalTo(40)
+        }
+    }
+    
+    func tapped() {
+        let image = isTapped ? "star.fill" : "star"
+            likeButton.setImage(UIImage(systemName: image), for: .normal)
+    }
+    
+    @objc
+    func likeButtonTapped() {
+        handler?()
     }
     
     //CarrotData 를 뿌려주는 과정
