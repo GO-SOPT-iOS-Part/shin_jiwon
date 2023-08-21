@@ -41,7 +41,7 @@ SOPT 32기 iOS YB 로 활동한 신지원의 과제 제출 레포지토리입니
 
 
 ### 🍎7주차
-7주차 세미나 복습 | [7주차 실습](https://github.com/GO-SOPT-iOS-Part/shin_jiwon/pull/16)
+[7주차 세미나 복습](https://ena-is.me/77) | [7주차 실습](https://github.com/GO-SOPT-iOS-Part/shin_jiwon/pull/16)
 |:---:|:---:|
 
 
